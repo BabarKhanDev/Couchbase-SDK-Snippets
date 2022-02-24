@@ -18,6 +18,10 @@
 			{
 			  "language": "java",
 			  "path": "./snippets/java/managementapi.json"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/python/managementapi.json"
 			}
 		  ]
 	},
