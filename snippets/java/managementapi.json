@@ -1,0 +1,27 @@
+{
+    "Create Collection": {
+      "prefix": ["@cbmkcollection"],
+      "body": ["CollectionSpec spec = CollectionSpec.create(\"${1:collectionName}\", \"${2:scopeName}\");","","try {", "  collectionMgr.createCollection(spec);","}","catch (CollectionExistsException e) {","  System.out.println(\"Collection already exists\");","}","catch (ScopeNotFoundException e) {","  System.out.println(\"The specified parent scope doesn't exist\");", "}"],
+      "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
+    },
+    "Create Scope": {
+      "prefix": ["@cbmkscope"],
+      "body": ["try {","  collectionMgr.createScope(\"${1:scopeName}\");", "}", "catch (ScopeExistsException e) {","  System.out.println(\"Scope already exists\");", "}"],
+      "description": "Create a new scope, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
+    },
+    "Create Bucket": {
+        "prefix": ["@cbmkbucket"],
+        "body": ["${1:clusterName}.buckets()","  .createBucket(BucketSettings.create(\"${2:bucketName}\")","    .bucketType(BucketType.COUCHBASE)","    .ramQuotaMB($3)","    .numReplicas($4)","    .replicaIndexes($5)", "    .flushEnabled($6));"],
+        "description": "Create a new bucket"
+    },
+    "Create Index": {
+        "prefix": ["@cbmkindex"],
+        "body": ["QueryIndexManager indexManager = QueryIndexManager()", "indexManager.createIndex(\"${1:bucketName}\", \"${2:indexName}\", ${3:fields})"],
+        "description": "Create a new index"
+    },
+    "Create Collection Manager": {
+        "prefix": ["@cbmkcollectionmanager"],
+        "body": ["Cluster cluster = Cluster.connect(\"${1:ipAddress}\", \"${2:username}\", \"${3:password}\";);", "Bucket bucket = cluster.bucket(\"${4:bucketName}\");", "CollectionManager collectionMgr = bucket.collections();"],
+        "description": "Connect to a cluster and a bucket, and create a CollectionManager"
+    }
+}

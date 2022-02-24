@@ -10,16 +10,16 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:couchbase-sdk-snippets.helloWorld"
+
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
+		"snippets": [
 			{
-				"command": "couchbase-sdk-snippets.helloWorld",
-				"title": "Hello World"
+			  "language": "java",
+			  "path": "./snippets/java/managementapi.json"
 			}
-		]
+		  ]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
