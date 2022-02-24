@@ -1,0 +1,32 @@
+{
+    "Create Collection": {
+        "prefix": ["@cbmkcollection"],
+        "body": ["collection := gocb.CollectionSpec{","    Name:      \"${1:collectionName}\",","    ScopeName: \"${2:scopeName}\",","}","","err = collections.CreateCollection(collection, nil)","if err != nil {","    if errors.Is(err, gocb.ErrCollectionExists) {","        fmt.Println(\"Collection already exists\")","    } else {","        panic(err)","    }","}"],
+        "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
+    },
+    "Create Scope": {
+        "prefix": ["@cbmkscope"],
+        "body": ["err = collections.CreateScope(\"${1:scopeName}\", nil)" ,"if err != nil {","    if errors.Is(err, gocb.ErrScopeExists) {","        fmt.Println(\"Scope already exists\")","    } else {","        panic(err)","    }","}"],
+        "description": "Create a new scope, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
+    },
+    "Create Bucket": {
+        "prefix": ["@cbmkbucket"],
+        "body": ["err := ${1:bucketMgr}.CreateBucket(gocb.CreateBucketSettings{","    BucketSettings: gocb.BucketSettings{","        Name:                 \"${2:name}\",","        FlushEnabled:         ${3:false},","        ReplicaIndexDisabled: ${4:true},","        RAMQuotaMB:           ${5:150},","        NumReplicas:          ${6:1},","        BucketType:           ${7:gocb.CouchbaseBucketType},","    },","    ConflictResolutionType: gocb.ConflictResolutionTypeSequenceNumber,","}, nil)","if err != nil {","    panic(err)","}"],
+        "description": "Create a new bucket, this requires a bucket manager to be present, you can create one with @cbmkbucketmanager"
+    },
+    "Create Index": {
+        "prefix": ["@cbmkindex"],
+        "body": ["queryManager := cluster.QueryIndexes()","err := queryManager.CreateIndex(\"${1:bucketName}\" , \"${2:indexName}\" , \"${3:fields}\")","if err != nil {","    panic(err)","}"],
+        "description": "Create a new query index manager object and an index."
+    },
+    "Create Collection Manager": {
+        "prefix": ["@cbmkcollectionmanager"],
+        "body": ["collections := bucket.Collections()"],
+        "description": "Create a collection manager on your bucket object."
+    },
+    "Create Bucket Manager": {
+        "prefix": ["@cbmkbucketmanager"],
+        "body": ["bucketMgr := ${1:cluster}.Buckets()"],
+        "description": "Create a bucket manager on your cluster object."
+    }
+}

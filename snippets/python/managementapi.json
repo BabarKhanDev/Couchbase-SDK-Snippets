@@ -17,7 +17,7 @@
     "Create Index": {
         "prefix": ["@cbmkindex"],
         "body": ["query_manager = ${1:cluster}.QueryIndexManager()", "query_manager.createIndex(\"${1:bucketName}\", \"${2:indexName}\", ${3:fields})"],
-        "description": "Create a new query index manager and an index on that object."
+        "description": "Create a new query index manager object and an index."
     },
     "Create Collection Manager": {
         "prefix": ["@cbmkcollectionmanager"],

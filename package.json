@@ -22,6 +22,10 @@
 			{
 				"language": "python",
 				"path": "./snippets/python/managementapi.json"
+			},
+			{
+				"language": "go",
+				"path": "./snippets/go/managementapi.json"
 			}
 		  ]
 	},
