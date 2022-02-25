@@ -23,5 +23,25 @@
         "prefix": ["@cbmkcollectionmanager"],
         "body": ["CollectionManager collectionMgr = ${1:bucket}.collections();"],
         "description": "Create a collection manager on your bucket object."
+    },
+    "Connect to a Cluster": {
+        "prefix": ["@cbcnncluster"],
+        "body": ["Cluster ${1:cluster} = Cluster.connect(\"${2:connectionString}\", \"${3:username}\", \"${4:password}\");"],
+        "description": "Connect to a cluster and create a new Cluster object"
+    },
+    "Connect to a Bucket": {
+        "prefix": ["@cbcnnbucket"],
+        "body": ["Bucket ${1:bucket} = ${2:cluster}.bucket(\"${3:bucketName}\");"],
+        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
+    },
+    "Connect to a Scope": {
+        "prefix": ["@cbcnnscope"],
+        "body": ["Scope ${1:scope} = ${2:bucket}.scope(\"${3:scopeName}\");"],
+        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
+    },
+    "Connect to a Collection": {
+        "prefix": ["@cbcnncollection"],
+        "body": ["Collection ${1:collection} = ${2:scope}.collection(\"${3:collectionName}\");"],
+        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
     }
 }
