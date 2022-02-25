@@ -30,6 +30,10 @@
 			{
 				"language": "csharp",
 				"path": "./snippets/dotnet/managementapi.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./snippets/nodejs/managementapi.json"
 			}
 		  ]
 	},
