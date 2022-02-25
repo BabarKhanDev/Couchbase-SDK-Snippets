@@ -28,5 +28,26 @@
         "prefix": ["@cbmkbucketmanager"],
         "body": ["const bucketMgr = ${1:cluster}.buckets()"],
         "description": "Create a bucket manager on your cluster object."
+    },
+    "Connect to a Cluster": {
+        "prefix": ["@cbcnncluster"],
+        "body": ["const couchbase = require('couchbase')","","async function main() {","  const ${1:cluster} = await couchbase.connect('${2:connectionString}', {","    username: '${3:username}',","    password: '${4:password}',","  })"],
+        "description": "Connect to a cluster and create a new Cluster object"
+    },
+    "Connect to a Bucket": {
+        "prefix": ["@cbcnnbucket"],
+        "body": ["const ${1:bucket} = ${2:cluster}.bucket('${bucketName}')"],
+        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
+    },
+    "Connect to a Scope": {
+        "prefix": ["@cbcnnscope"],
+        "body": ["const ${1:scope} = ${2:bucket}.scope('${3:scopeName}')"],
+        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
+    },
+    "Connect to a Collection": {
+        "prefix": ["@cbcnncollection"],
+        "body": ["const ${1:collection} = ${2:scope}.collection('${3:collectionName}')"],
+        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
     }
 }
+
