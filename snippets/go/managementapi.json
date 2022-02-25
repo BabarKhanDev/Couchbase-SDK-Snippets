@@ -28,5 +28,25 @@
         "prefix": ["@cbmkbucketmanager"],
         "body": ["bucketMgr := ${1:cluster}.Buckets()"],
         "description": "Create a bucket manager on your cluster object."
+    },
+    "Connect to a Cluster": {
+        "prefix": ["@cbcnncluster"],
+        "body": ["func main() {","  ${1:cluster}, err := gocb.Connect(","        \"${2:connectionString}\",","       gocb.ClusterOptions{","         Username: \"${3:username}\",","         Password: \"${4:password}\",","     })","   if err != nil {","      panic(err)","   }"],
+        "description": "Connect to a cluster and create a new Cluster object"
+    },
+    "Connect to a Bucket": {
+        "prefix": ["@cbcnnbucket"],
+        "body": ["// get a bucket reference","${1:bucket} := ${2:cluster}.Bucket(\"${3:bucketName}\")","","// We wait until the bucket is definitely connected and setup.","err = bucket.WaitUntilReady(5*time.Second, nil)","if err != nil {","    panic(err)","}"],
+        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
+    },
+    "Connect to a Scope": {
+        "prefix": ["@cbcnnscope"],
+        "body": ["${1:scope} := ${2:bucket}.Scope(\"${3:scopeName}\")"],
+        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
+    },
+    "Connect to a Collection": {
+        "prefix": ["@cbcnncollection"],
+        "body": ["${1:collection} := ${2:scope}.Collection(\"${3:collectionName}\")"],
+        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
     }
 }
