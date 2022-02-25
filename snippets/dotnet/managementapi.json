@@ -28,5 +28,25 @@
         "prefix": ["@cbmkbucketmanager"],
         "body": ["IBucketManager bucketMgr = ${1:cluster}.Buckets;"],
         "description": "Create a bucket manager on your cluster object."
+    },
+    "Connect to a Cluster": {
+        "prefix": ["@cbcnncluster"],
+        "body": ["var ${1:cluster} = await Cluster.ConnectAsync(\"${2:connectionString}\", \"${3:username}\", \"${4:password}\");"],
+        "description": "Connect to a cluster and create a new Cluster object"
+    },
+    "Connect to a Bucket": {
+        "prefix": ["@cbcnnbucket"],
+        "body": ["var ${1:bucket} = await ${2:cluster}.BucketAsync(\"${3:bucketName}\");"],
+        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
+    },
+    "Connect to a Scope": {
+        "prefix": ["@cbcnnscope"],
+        "body": ["var ${1:scope} = await ${2:bucket}.ScopeAsync(\"${3:scopeName}\");"],
+        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
+    },
+    "Connect to a Collection": {
+        "prefix": ["@cbcnncollection"],
+        "body": ["var ${1:collection} = await ${2:scope}.CollectionAsync(\"${3:collectionName}\");"],
+        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
     }
 }
