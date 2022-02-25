@@ -16,17 +16,17 @@
     },
     "Create Index": {
         "prefix": ["@cbmkindex"],
-        "body": [],
+        "body": ["not sure the best way to make this yet"],
         "description": "Create a new query index manager object and an index."
     },
     "Create Collection Manager": {
         "prefix": ["@cbmkcollectionmanager"],
-        "body": ["ICouchbaseCollectionManager collectionMgr = bucket.Collections;"],
+        "body": ["ICouchbaseCollectionManager collectionMgr = ${1:bucket}.Collections;"],
         "description": "Create a collection manager on your bucket object."
     },
     "Create Bucket Manager": {
         "prefix": ["@cbmkbucketmanager"],
-        "body": ["IBucketManager bucketMgr = cluster.Buckets;"],
+        "body": ["IBucketManager bucketMgr = ${1:cluster}.Buckets;"],
         "description": "Create a bucket manager on your cluster object."
     }
 }
