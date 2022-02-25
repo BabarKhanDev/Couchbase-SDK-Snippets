@@ -26,6 +26,10 @@
 			{
 				"language": "go",
 				"path": "./snippets/go/managementapi.json"
+			},
+			{
+				"language": "csharp",
+				"path": "./snippets/dotnet/managementapi.json"
 			}
 		  ]
 	},
