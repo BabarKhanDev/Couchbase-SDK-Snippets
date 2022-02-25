@@ -28,5 +28,25 @@
         "prefix": ["@cbmkbucketmanager"],
         "body": ["bucket_manager = ${1:cluster}.buckets()"],
         "description": "Create a bucket manager on your cluster object."
+    },
+    "Connect to a Cluster": {
+        "prefix": ["@cbcnncluster"],
+        "body": ["${1:cluster} = Cluster('${2:connection_string}', ClusterOptions(","  PasswordAuthenticator('${3:username}', '${4:password}')))"],
+        "description": "Connect to a cluster and create a new Cluster object"
+    },
+    "Connect to a Bucket": {
+        "prefix": ["@cbcnnbucket"],
+        "body": ["${1:bucket} = ${2:cluster}.bucket('${3:bucket_name}')"],
+        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
+    },
+    "Connect to a Scope": {
+        "prefix": ["@cbcnnscope"],
+        "body": ["${1:scope} = ${2:bucket}.scope(\"${3:scope_name}\")"],
+        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
+    },
+    "Connect to a Collection": {
+        "prefix": ["@cbcnncollection"],
+        "body": ["${1:collection} = ${2:scope}.collection(\"${3:collection_name}\")"],
+        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
     }
 }

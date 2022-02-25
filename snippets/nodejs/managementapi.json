@@ -36,7 +36,7 @@
     },
     "Connect to a Bucket": {
         "prefix": ["@cbcnnbucket"],
-        "body": ["const ${1:bucket} = ${2:cluster}.bucket('${bucketName}')"],
+        "body": ["const ${1:bucket} = ${2:cluster}.bucket('${3:bucketName}')"],
         "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
     },
     "Connect to a Scope": {
