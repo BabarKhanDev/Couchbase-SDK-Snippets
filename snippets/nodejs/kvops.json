@@ -1,42 +1,27 @@
 {
     "Upsert Document": {
         "prefix": ["@cbupsert"],
-        "body": [""],
+        "body": ["let result = await ${1:collection}.upsert(${2:key}, ${3:document},","    {","        expiry: ${4:60},  // 60 seconds,","        durabilityLevel: couchbase.DurabilityLevel.${5:None}, // Majority etc.","        timeout: ${6:5000}","    } // 5 seconds",");"],
         "description": "Create a JSON object and upsert it to a collection."
     },
     "Insert Document": {
         "prefix": ["@cbinsert"],
-        "body": [""],
+        "body": ["const result = await ${1:collection}.insert(${2:key}, ${3:document},","    { timeout: ${4:10000} } // 10 seconds",");"],
         "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
         "prefix": ["@cbreplace"],
-        "body": [""],
+        "body": ["const result = await ${1:collection}.replace(${2:key},","    ${3:document},","    { cas: ${4:cas}, expiry: ${5:60}, timeout: ${6:5000} }",");"],
         "description": "Create a JSON object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
     "Retrieve Document": {
         "prefix": ["@cbget"],
-        "body": [""],
+        "body": ["const result = await ${1:collection}.get(${2:key}, { timeout: ${3:1000} });","document = result.value;"],
         "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
     },
     "Remove Document": {
         "prefix": ["@cbremove"],
-        "body": [""],
+        "body": ["const result = await ${1:collection}.remove(${2:key},","    {","        cas: ${3:cas},","        persist_to: ${4:0},  // non-zero gives \"not implemented\"","        replicate_to: ${5:0}, // cannot replicate on single node","        timeout: ${6:5000}","    }",");"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
-    },
-    "Basic N1QL Query": {
-        "prefix": ["@cbquery"],
-        "body": [""],
-        "description":"Perform a query on a cluster and handle the results"
-    },
-    "Binary Increment": {
-        "prefix": ["@cbincrement"],
-        "body": [""],
-        "description": "Increment the value of an atomic counter, this will fail if no document with the specified key exists."
-    },
-    "Binary Decrement": {
-        "prefix": ["@cbdecrement"],
-        "body": [""],
-        "description": "Decrement the value of an atomic counter, this will fail if no document with the specified key exists."
     }
 }
