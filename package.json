@@ -16,8 +16,8 @@
 	"contributes": {
 		"snippets": [
 			{
-			  "language": "java",
-			  "path": "./snippets/java/managementapi.json"
+			  	"language": "java",
+			  	"path": "./snippets/java/managementapi.json"
 			},
 			{
 				"language": "python",
@@ -34,8 +34,28 @@
 			{
 				"language": "javascript",
 				"path": "./snippets/nodejs/managementapi.json"
-			}
-		  ]
+			},
+			{
+				"language": "java",
+				"path": "./snippets/java/kvops.json"
+		  	},
+		  	{
+				"language": "python",
+				"path": "./snippets/python/kvops.json"
+		  	},
+		  	{
+				"language": "go",
+				"path": "./snippets/go/kvops.json"
+		  	},
+		  	{
+				"language": "csharp",
+			  	"path": "./snippets/dotnet/kvops.json"
+		  	},
+		  	{
+			 	"language": "javascript",
+			  	"path": "./snippets/nodejs/kvops.json"
+		  	}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
