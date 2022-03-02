@@ -1,47 +1,47 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Get(\"${3:path}\")",");","","string country = result.ContentAs<string>(0);","WriteLine(country);"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
         "prefix": ["@cbcheckpath"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Exists(\"${3:path}\")",");","","bool exists = result.ContentAs<bool>(0);"],
         "description": "Check if a path exists for a given document key."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": [],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Upsert(\"${3:key}\", \"${4:value}\")",");"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
-        "body": [],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayAppend(\"${3:path}\", new [] {${4:value}})",");"],
         "description": "Append a value to an existing array in a document."
     },
     "Array Prepend": {
         "prefix": ["@cbsubarrpre"],
-        "body": [],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayPrepend(\"${3:path}\", new [] {${4:value}})",");"],
         "description": "Prepend a value to an existing array in a document."
     },
     "Array Add Unique": {
         "prefix": ["@cbsubarradd"],
-        "body": [],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayAddUnique(\"${3:path}\", ${4:value})",");"],
         "description": "Treat an existing array like a unique set and add a value."
     },
     "Array Insert At": {
         "prefix": ["@cbsubarrins"],
-        "body": [],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayInsert(\"${3:path[index]}\", new[] {${4:value}})",");"],
         "description": "Insert a new element into an array at a specific position."
     },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Increment(\"${3:path}\", ${4:value})",");","","// Counter operations return the updated count","var count = result.ContentAs<long>(0);"],
         "description": "Increment a numeric value inside a document."
     },
     "Sub Doc Decrementation": {
         "prefix": ["@cbsubdec"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Decrement(\"${3:path}\", ${4:value})",");","","// Counter operations return the updated count","var count = result.ContentAs<long>(0);"],
         "description": "Decrement a numeric value inside a document."
     }
 }
