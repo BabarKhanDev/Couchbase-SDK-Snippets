@@ -1,47 +1,47 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.lookupIn('${2:document-key}', [","  couchbase.LookupInSpec.get('${3:path}'),","])","var output = result.content[0].value"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
         "prefix": ["@cbcheckpath"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.lookupIn('${2:document-key}', [","  couchbase.LookupInSpec.exists('${3:path}'),","])","console.log('Path exists? ', result.content[0].value)"],
         "description": "Check if a path exists for a given document key."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": [],
+        "body": ["await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.upsert('${3:path}', '${4:value}'),","])"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
-        "body": [],
+        "body": ["await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.arrayAppend('${3:path}', ${4:value}),","])"],
         "description": "Append a value to an existing array in a document."
     },
     "Array Prepend": {
         "prefix": ["@cbsubarrpre"],
-        "body": [],
+        "body": ["await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.arrayPrepend('${3:path}', ${4:value}),","])"],
         "description": "Prepend a value to an existing array in a document."
     },
     "Array Add Unique": {
         "prefix": ["@cbsubarradd"],
-        "body": [],
+        "body": ["try {","  await ${1:collection}.mutateIn('${2:document-key}', [","    couchbase.MutateInSpec.arrayAddUnique('${3:path}', ${4:value}),","  ])","} catch (e) {","  if (e instanceof couchbase.PathExistsError) {","    console.log('Path already exists, not adding unique value')","  } else {","    throw e","  }","}"],
         "description": "Treat an existing array like a unique set and add a value."
     },
     "Array Insert At": {
         "prefix": ["@cbsubarrins"],
-        "body": [],
+        "body": ["await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.arrayInsert('${3:path[index]}', '${4:value}'),","])"],
         "description": "Insert a new element into an array at a specific position."
     },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.increment('${3:path}', ${4:value}),","])","","console.log(result.content[0])"],
         "description": "Increment a numeric value inside a document."
     },
     "Sub Doc Decrementation": {
         "prefix": ["@cbsubdec"],
-        "body": [],
+        "body": ["var result = await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.decrement('${3:path}', ${4:value}),","])","","console.log(result.content[0])"],
         "description": "Decrement a numeric value inside a document."
     }
 }

@@ -1,7 +1,7 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Get(\"${3:path}\")",");","","string country = result.ContentAs<string>(0);","WriteLine(country);"],
+        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Get(\"${3:path}\")",");","","string output = result.ContentAs<string>(0);","WriteLine(country);"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
@@ -11,7 +11,7 @@
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Upsert(\"${3:key}\", \"${4:value}\")",");"],
+        "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Upsert(\"${3:path}\", \"${4:value}\")",");"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
