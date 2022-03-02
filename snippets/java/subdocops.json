@@ -1,47 +1,47 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": [],
+        "body": ["LookupInResult result = ${1:collection}.lookupIn(\"${2:document-key}\", Collections.singletonList(get(\"${3:path}\")));","","String str = result.contentAs(0, String.class);","System.out.println(str);"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
         "prefix": ["@cbcheckpath"],
-        "body": [],
+        "body": ["try {","    LookupInResult result = ${1:collection}.lookupIn(\"${2:document-key}\",","        Collections.singletonList(exists(\"${3:path}\")));","} catch (PathNotFoundException e) {","    System.out.println(\"existsFunc: \" + e);","}"],
         "description": "Check if a path exists for a given document key."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": [],
+        "body": ["${1:collection}.mutateIn(\"${2:document-key}\", Arrays.asList(upsert(\"${3:path}\", \"${4:value}\")));"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
-        "body": [],
+        "body": ["MutationResult result = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayAppend(\"${3:path}\", Collections.singletonList(\"${4:value}\"))));"],
         "description": "Append a value to an existing array in a document."
     },
     "Array Prepend": {
         "prefix": ["@cbsubarrpre"],
-        "body": [],
+        "body": ["MutationResult result = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayPrepend(\"${3:path}\", Collections.singletonList(\"${4:value}\"))));"],
         "description": "Prepend a value to an existing array in a document."
     },
     "Array Add Unique": {
         "prefix": ["@cbsubarradd"],
-        "body": [],
+        "body": ["try {","    ${1:collection}.mutateIn(\"${2:document-key}\", Collections.singletonList(arrayAddUnique(\"${3:path}\", ${4:value})));","} catch (PathExistsException err) {","    System.out.println(\"arrayUnique: caught exception, path already exists\");","}"],
         "description": "Treat an existing array like a unique set and add a value."
     },
     "Array Insert At": {
         "prefix": ["@cbsubarrins"],
-        "body": [],
+        "body": ["MutateInResult result = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayInsert(\"${3:path[index]}\", Collections.singletonList(\"${4:value}\"))));"],
         "description": "Insert a new element into an array at a specific position."
     },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
-        "body": [],
+        "body": ["MutateInResult result = ${1:collection}.mutateIn(\"${2:document-key}\", Collections.singletonList(increment(\"${3:path}\", ${4:value})));","// Counter operations return the updated count","Long count = result.contentAs(0, Long.class);"],
         "description": "Increment a numeric value inside a document."
     },
     "Sub Doc Decrementation": {
         "prefix": ["@cbsubdec"],
-        "body": [],
+        "body": ["MutateInResult result = ${1:collection}.mutateIn(\"${2:document-key}\", Collections.singletonList(decrement(\"${3:path}\", ${4:value})));","// Counter operations return the updated count","Long count = result.contentAs(0, Long.class);"],
         "description": "Decrement a numeric value inside a document."
     }
 }
