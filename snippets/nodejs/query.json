@@ -2,11 +2,11 @@
     "Create SQL++ Query": {
         "prefix": ["@cbquery"],
         "body": [],
-        "description": "Use SQL++ to Query the Couchbase Server."
+        "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
         "prefix": ["@cbqueryopts"],
         "body": [],
-        "description": "Use SQL++ to Query the Couchbase Server, this has all options available."
+        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
     }
 }

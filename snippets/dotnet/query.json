@@ -1,12 +1,12 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbquery"],
-        "body": [],
-        "description": "Use SQL++ to Query the Couchbase Server."
+        "body": ["var result = await ${1:cluster}.QueryAsync<dynamic>(","    \"${2:query}\"",");"],
+        "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
         "prefix": ["@cbqueryopts"],
-        "body": [],
-        "description": "Use SQL++ to Query the Couchbase Server, this has all options available."
+        "body": ["var result = await ${1:cluster}.QueryAsync<dynamic>(","    \"${2:query}\",","    options => options.clientContextId(${3:String})","        .parameters(${4:JsonArray})","        .parameters(${5:JsonObject})","        .priority(${6:boolean})","        .raw(${7:String, Object})","        .readonly(${8:boolean})","        .adhoc(${9:boolean})","        .consistentWith(${10:MutationState})","        .maxParallelism(${11:int})","        .metrics(${12:boolean})","        .pipelineBatch(${13:int})","        .pipelineCap(${14:int})","        .profile(${15:QueryProfile})","        .scanWait(${16:Duration})","        .scanCap(${17:int})","        .scanConsistency(${18:QueryScanConsistency})","        .serializer(${19:JsonSerializer})",");"],
+        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
     }
 }
