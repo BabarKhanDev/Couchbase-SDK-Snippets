@@ -1,47 +1,47 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": [],
+        "body": ["result = ${1:collection}.lookup_in(\"${2:document-key}\",","                              [SD.get(\"${3:path}\")])","output = result.content_as[str](0)"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
         "prefix": ["@cbcheckpath"],
-        "body": [],
+        "body": ["result = ${1:collection}.lookup_in(","    \"${2:document-key}\", [","        SD.exists(\"${3:path}\")])","print('Path exists: {}.'.format(result.exists(0)))"],
         "description": "Check if a path exists for a given document key."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": [],
+        "body": ["${1:collection}.mutate_in(\"${2:document-key}\", [SD.upsert(\"${3:path}\", \"${4:value}\")])"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
-        "body": [],
+        "body": ["${1:collection}.mutate_in(","    \"${2:document-key}\", (SD.array_append(","                    \"${3:path}\", ${4:value}),))"],
         "description": "Append a value to an existing array in a document."
     },
     "Array Prepend": {
         "prefix": ["@cbsubarrpre"],
-        "body": [],
+        "body": ["${1:collection}.mutate_in(","    \"${2:document-key}\", [","        SD.array_prepend(","            \"${3:path}\", ${4:value}])"],
         "description": "Prepend a value to an existing array in a document."
     },
     "Array Add Unique": {
         "prefix": ["@cbsubarradd"],
-        "body": [],
+        "body": ["try:","    ${1:collection}.mutate_in(","        \"${2:document-key}\", [","            SD.array_addunique(","                \"${3:path}\", ${4:value})])","    print('Success!')","except PathExistsException:","    print('Path already exists.')"],
         "description": "Treat an existing array like a unique set and add a value."
     },
     "Array Insert At": {
         "prefix": ["@cbsubarrins"],
-        "body": [],
+        "body": ["${1:collection}.mutate_in(\"${2:document-key}\", [SD.array_insert(\"${3:path[index]}\", \"${4:value}\")])"],
         "description": "Insert a new element into an array at a specific position."
     },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
-        "body": [],
-        "description": "Increment a numeric value inside a document."
+        "body": ["result = ${1:collection}.mutate_in(\"${2:document-key}\", (SD.counter(\"${3:path}\", ${4:value}),))"],
+        "description": "Increment a numeric value inside a document, for this value must be positive."
     },
     "Sub Doc Decrementation": {
         "prefix": ["@cbsubdec"],
-        "body": [],
-        "description": "Decrement a numeric value inside a document."
+        "body": ["result = ${1:collection}.mutate_in(\"${2:document-key}\", (SD.counter(\"${3:path}\", ${4:value}),))"],
+        "description": "Decrement a numeric value inside a document, for this value must be negative."
     }
 }
