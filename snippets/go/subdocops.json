@@ -1,47 +1,47 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": [],
+        "body": ["ops := []gocb.LookupInSpec{","    gocb.GetSpec(\"${1:path}\", &gocb.GetSpecOptions{}),","}","getResult, err := ${2:collection}.LookupIn(\"${3:document-key}\", ops, &gocb.LookupInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Get a sub document value by providing document and attribute keys."
     },
     "Check Path Exists": {
         "prefix": ["@cbcheckpath"],
-        "body": [],
+        "body": ["ops = []gocb.LookupInSpec{","    gocb.ExistsSpec(\"${1:path}\", &gocb.ExistsSpecOptions{}),","}","existsResult, err := ${2:collection}.LookupIn(\"${3:document-key}\", ops, &gocb.LookupInOptions{})","if err != nil {","    panic(err)","}","","exists := existsResult.Exists(0)","","fmt.Printf(\"Path exists? %t\\n\", exists)"],
         "description": "Check if a path exists for a given document key."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
-        "body": [],
+        "body": ["mops := []gocb.MutateInSpec{","    gocb.UpsertSpec(\"${1:path}\", \"${2:value}\", &gocb.UpsertSpecOptions{}),","}","upsertResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{","    Timeout: ${5:10050} * time.Millisecond,","})","if err != nil {","    panic(err)","}"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
-        "body": [],
+        "body": ["mops := []gocb.MutateInSpec{","    gocb.ArrayAppendSpec(\"${1:path}\", ${2:value}, nil),","}","arrayAppendResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Append a value to an existing array in a document."
     },
     "Array Prepend": {
         "prefix": ["@cbsubarrpre"],
-        "body": [],
+        "body": ["mops = []gocb.MutateInSpec{","    gocb.ArrayPrependSpec(\"${1:path}\", ${2:value}, nil),","}","arrayPrependResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Prepend a value to an existing array in a document."
     },
     "Array Add Unique": {
         "prefix": ["@cbsubarradd"],
-        "body": [],
+        "body": ["mops = []gocb.MutateInSpec{","    gocb.ArrayAddUniqueSpec(\"${1:path}\", ${2:value}, &gocb.ArrayAddUniqueSpecOptions{}),","}","arrayAddUniqueResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}","fmt.Println(arrayAddUniqueResult.Cas())"],
         "description": "Treat an existing array like a unique set and add a value."
     },
     "Array Insert At": {
         "prefix": ["@cbsubarrins"],
-        "body": [],
+        "body": ["mops = []gocb.MutateInSpec{","    gocb.ArrayInsertSpec(\"${1:path[index]}\", \"${2:value}\", &gocb.ArrayInsertSpecOptions{}),","}","arrayInsertResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Insert a new element into an array at a specific position."
     },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
-        "body": [],
+        "body": ["mops := []gocb.MutateInSpec{","    gocb.IncrementSpec(\"${1:path}\", ${2:value}, &gocb.CounterSpecOptions{}),","}","_, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Increment a numeric value inside a document."
     },
     "Sub Doc Decrementation": {
         "prefix": ["@cbsubdec"],
-        "body": [],
+        "body": ["mops = []gocb.MutateInSpec{","    gocb.DecrementSpec(\"${1:path}\", ${2:value}, &gocb.CounterSpecOptions{}),","}","_, err := collection.MutateIn(\"${3:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Decrement a numeric value inside a document."
     }
 }
