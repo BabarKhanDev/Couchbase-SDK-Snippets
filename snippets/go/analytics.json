@@ -1,12 +1,12 @@
 {
     "Create Analytics Query": {
         "prefix": ["@cbanalytics"],
-        "body": ["query := \"${1:query}\"","params := make(map[string]interface{}, 1)","params[\"${2:key}\"] = \"${3:value}\"","rows, err := ${4:cluster}.Query(query, &gocb.QueryOptions{NamedParameters: params})","","if err != nil {","    panic(err)","}"],
+        "body": ["results, err := ${1:cluster}.AnalyticsQuery(\"${2:query}\", nil)","if err != nil {","    panic(err)","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "Analytics Query With Parameters": {
         "prefix": ["@cbanalyticspara"],
-        "body": ["query := \"${1:query}\"","rows, err := ${2:cluster}.Query(query, &gocb.QueryOptions{","    ClientContextID: ${3}","    PositionalParameters: ${4}","    NamedParameters: ${5}","    Raw: ${6}","    ReadOnly: ${7}","    Adhoc: ${8}","    ConsistentWith: ${9}","    MaxParallelism: ${10}","    Metrics: ${11}","    PipelineBatch: ${12}","    PipelineCap: ${13}","    Profile: ${14}","    ScanWait: ${15}","    ScanCap: ${16}","    ScanConsistency: ${17}","})","if err != nil {","    panic(err)","}"],
+        "body": ["results, err := ${1:cluster}.AnalyticsQuery(","    \"${2:query}\",","    &gocb.AnalyticsOptions{","        PositionalParameters: []interface{}{${3:parameters}}, // keep this line for positional parameters","        NamedParameters: map[string]interface{}{${3:parameters}}, // keep this line for named parameters","    },",")"],
         "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
     }
 }
