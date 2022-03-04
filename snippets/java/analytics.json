@@ -1,0 +1,12 @@
+{
+    "Create Analytics Query": {
+        "prefix": ["@cbanalytics"],
+        "body": ["try {","    final QueryResult result = ${1:cluster}.query(\"${2:query}\",","        queryOptions().metrics(true));","","    for (JsonObject row : result.rowsAsObject()) {","      System.out.println(\"Found row: \" + row);","    }","","    System.out.println(\"Reported execution time: \" + result.metaData().metrics().get().executionTime());","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
+        "description": "Use SQL++ to Query the Couchbase Cluster."
+    },
+    "Analytics Query With all Options": {
+        "prefix": ["@cbanalyticsopts"],
+        "body": ["QueryOptions qo = QueryOptions.queryOptions();","qo.clientContextId(${1:String});","qo.parameters(${2:JsonArray});","qo.parameters(${3:JsonObject});","qo.priority(${4:boolean});","qo.raw(${5:String, Object});","qo.readonly(${6:boolean});","qo.adhoc(${7:boolean});","qo.consistentWith(${8:MutationState});","qo.maxParallelism(${9:int});","qo.metrics(${10:boolean});","qo.pipelineBatch(${11:int});","qo.pipelineCap(${12:int});","qo.profile(${13:QueryProfile});","qo.scanWait(${14:Duration});","qo.scanCap(${15:int});","qo.scanConsistency(${16:QueryScanConsistency});","qo.serializer(${17:JsonSerializer});","","try {","    final QueryResult result = ${18:cluster}.query(\"${19:query}\", qo );","","    for (JsonObject row : result.rowsAsObject()) {","        System.out.println(\"Found row: \" + row);","    }","","    System.out.println(\"Reported execution time: \" + result.metaData().metrics().get().executionTime());","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
+        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
+    }
+}

@@ -19,22 +19,27 @@
 			{"language": "java","path": "./snippets/java/kvops.json"},
 			{"language": "java","path": "./snippets/java/subdocops.json"},
 			{"language": "java","path": "./snippets/java/query.json"},
+			{"language": "java","path": "./snippets/java/analytics.json"},
 			{"language": "python","path": "./snippets/python/managementapi.json"},
 			{"language": "python","path": "./snippets/python/kvops.json"},
 			{"language": "python","path": "./snippets/python/subdocops.json"},
 			{"language": "python","path": "./snippets/python/query.json"},
+			{"language": "python","path": "./snippets/python/analytics.json"},
 			{"language": "javascript","path": "./snippets/nodejs/managementapi.json"},
 			{"language": "javascript","path": "./snippets/nodejs/kvops.json"},
 			{"language": "javascript","path": "./snippets/nodejs/subdocops.json"},
 			{"language": "javascript","path": "./snippets/nodejs/query.json"},
+			{"language": "javascript","path": "./snippets/nodejs/analytics.json"},
 			{"language": "go","path": "./snippets/go/managementapi.json"},
 			{"language": "go","path": "./snippets/go/kvops.json"},
 			{"language": "go","path": "./snippets/go/subdocops.json"},
 			{"language": "go","path": "./snippets/go/query.json"},
+			{"language": "go","path": "./snippets/go/analytics.json"},
 			{"language": "csharp","path": "./snippets/dotnet/managementapi.json"},
 			{"language": "csharp","path": "./snippets/dotnet/kvops.json"},
 			{"language": "csharp","path": "./snippets/dotnet/subdocops.json"},
-			{"language": "csharp","path": "./snippets/dotnet/query.json"}
+			{"language": "csharp","path": "./snippets/dotnet/query.json"},
+			{"language": "csharp","path": "./snippets/dotnet/analytics.json"}
 		]
 	},
 	"scripts": {
