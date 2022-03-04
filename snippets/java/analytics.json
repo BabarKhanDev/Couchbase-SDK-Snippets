@@ -2,11 +2,11 @@
     "Create Analytics Query": {
         "prefix": ["@cbanalytics"],
         "body": ["try {","    AnalyticsResult result = ${1:cluster}.analyticsQuery(\"${2:query}\");","","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
-        "description": "Use SQL++ to Query the Couchbase Cluster."
+        "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster."
     },
     "Analytics Query With all Options": {
         "prefix": ["@cbanalyticsopts"],
         "body": ["QueryOptions qo = AnalyticsOptions.analyticsOptions();","qo.clientContextId(${1:String});","qo.parameters(${2:JsonArray});","qo.parameters(${3:JsonObject});","qo.priority(${4:boolean});","qo.raw(${5:String, Object});","qo.readonly(${6:boolean});","qo.scanConsistency(${7:QueryScanConsistency});","qo.serializer(${8:JsonSerializer});","","try {","    final AnalyticsResult result = ${9:cluster}.analyticsQuery(\"${10:query}\", qo );","","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
-        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
+        "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster, this has all options available."
     }
 }
