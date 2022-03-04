@@ -4,8 +4,8 @@
         "body": ["async function queryPlaceholders() {","    const query = `","    ${1:query}","    `;","    const options = { parameters: ['${2:parameters}'] }","","    try {","      let result = await ${3:cluster}.query(query, options)","      console.log(\"Result:\", result)","      return result","    } catch (error) {","      console.error('Query failed: ', error)","    }","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
-    "Analytics Query With all Options": {
-        "prefix": ["@cbanalyticsopts"],
+    "Analytics Query With Parameters": {
+        "prefix": ["@cbanalyticspara"],
         "body": ["async function queryPlaceholders() {","    const query = `","    ${1:query}","    `;","    const options = { ","        parameters: ${2}","        scanConsistency: ${3}","        consistentWith: ${4}","        adhoc: ${5}","        flexIndex: ${6}","        preserveExpiry: ${7}","        clientContextId: ${8}","        maxParallelism: ${9}","        pipelineBatch: ${10}","        pipelineCap: ${11}","        scanWait: ${12}","        scanCap: ${13}","        readOnly: ${14}","        profile: ${15}","        metrics: ${16}","        queryContext: ${17}","        raw: ${18}","        timeout: ${19}","    }","","    try {","      let result = await ${20:cluster}.query(query, options)","      console.log(\"Result:\", result)","      return result","    } catch (error) {","      console.error('Query failed: ', error)","    }","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
     }

@@ -4,9 +4,9 @@
         "body": ["var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:query}\");"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
-    "Analytics Query With all Options": {
-        "prefix": ["@cbanalyticsopts"],
-        "body": ["var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:query}\")","    .AddPositionalParameter(\"${3:parameters}\");","    .AddNamedParameter(\"${3:parameters}\");"],
-        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
+    "Analytics Query With Parameters": {
+        "prefix": ["@cbanalyticspara"],
+        "body": ["var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:query}\")","    .AddPositionalParameter(\"${3:parameters}\");","    .AddNamedParameter(${3:parameters});"],
+        "description": "Use SQL++ to Query the Couchbase Cluster, this uses parameters."
     }
 }
