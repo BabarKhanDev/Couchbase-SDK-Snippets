@@ -1,12 +1,12 @@
 {
     "Full Text Search": {
         "prefix": ["@cbfts"],
-        "body": [],
-        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster"
+        "body": ["matchResult, err := ${1:cluster}.SearchQuery(","    \"${2:search-index}\",","    search.NewMatchQuery(\"${3:query-string}\"),",")","if err != nil {","    panic(err)","}"],
+        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster."
     },
     "Full Text Search With all Options and Search Queries": {
         "prefix": ["@cbftsopts"],
-        "body": [],
-        "description": "Create a FTS query that has all available search queries and options shown to you. You may only use one search query and will have to remove the rest"
+        "body": ["matchResult, err := ${1:cluster}.SearchQuery(","    \"${2:search-index}\",","    search.NewMatchQuery(\"${3:query-string}\"),","    &gocb.SearchOptions{","        Limit:  ${4:limit},","        Fields: ${5:[]string{string}},","        Facets: ${6:map[string]search.Facet{}},","        ConsistentWith: ${7:consistency},","","    },",")","if err != nil {","    panic(err)","}"],
+        "description": "Create a FTS query that has all options shown to you."
     }
 }

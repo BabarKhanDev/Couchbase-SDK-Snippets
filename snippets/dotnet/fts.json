@@ -1,12 +1,12 @@
 {
     "Full Text Search": {
         "prefix": ["@cbfts"],
-        "body": [],
-        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster"
+        "body": ["var result = ${1:cluster}.SearchQuery(","    \"${2:search-index}\",","    new MatchQuery(\"${3:query-string}\"),",");"],
+        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster."
     },
     "Full Text Search With all Options and Search Queries": {
         "prefix": ["@cbftsopts"],
-        "body": [],
-        "description": "Create a FTS query that has all available search queries and options shown to you. You may only use one search query and will have to remove the rest"
+        "body": ["var result = ${1:cluster}.SearchQuery(","    \"${2:search-index}\",","    new MatchQuery(\"${3:query-string}\"),","    options => options.Limit(${4:10});","    options => options.WithConsistency(${5:ScanConsistency.RequestPlus});","",");"],
+        "description": "Create a FTS query that has all options shown to you."
     }
 }

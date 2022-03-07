@@ -1,12 +1,12 @@
 {
     "Full Text Search": {
         "prefix": ["@cbfts"],
-        "body": [],
-        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster"
+        "body": ["async function ftsMatchWord(term) {","    return await ${1:cluster}.searchQuery(","        '${2:search-index}',","        couchbase.SearchQuery.match(term)","    )","}"],
+        "description": "Use a query string on the Full Text Search Service of your Couchbase Cluster."
     },
     "Full Text Search With all Options and Search Queries": {
         "prefix": ["@cbftsopts"],
-        "body": [],
-        "description": "Create a FTS query that has all available search queries and options shown to you. You may only use one search query and will have to remove the rest"
+        "body": ["async function ftsMatchWord(term) {","    return await ${1:cluster}.searchQuery(","        '${2:search-index}',","        couchbase.SearchQuery.match(term),","        {","            limit: ${3:5},","            consistentWith: ${4:mutationState}, ","        }","    )","}"],
+        "description": "Create a FTS query that has all options shown to you."
     }
 }
