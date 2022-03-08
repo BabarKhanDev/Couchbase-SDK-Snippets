@@ -3,6 +3,9 @@
 	"displayName": "Couchbase-SDK-Snippets",
 	"description": "",
 	"version": "0.0.1",
+	"author": {
+		"name":"Babar Khan"
+	},
 	"repository": {
 		"type":"git",
 		"url": "https://github.com/BabarKhanDev/Couchbase-SDK-Snippets.git"
