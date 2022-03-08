@@ -1,7 +1,7 @@
 {
     "Create Collection": {
         "prefix": ["@cbcrcol"],
-        "body": ["collection_spec = CollectionSpec(","    \"${1:collection_name}\",","    scope_name=\"${2:scope_name}\")","","try:","    collection = coll_manager.create_collection(collection_spec)","except CollectionAlreadyExistsException as ex:","    print(ex)"],
+        "body": ["coll_manager = ${1:bucket}.collections()","","collection_spec = CollectionSpec(","    \"${2:collection_name}\",","    scope_name=\"${3:scope_name}\")","","try:","    collection = coll_manager.create_collection(collection_spec)","except CollectionAlreadyExistsException as ex:","    print(ex)"],
         "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager."
     },
     "Create Scope": {
@@ -11,7 +11,7 @@
     },
     "Create Bucket": {
         "prefix": ["@cbcrbuck"],
-        "body": ["${1:bucket_manager}.create_bucket(","    CreateBucketSettings(","        name=\"${2:bucket_name}\",","        flush_enabled=${3:False},","        ram_quota_mb=${4:100},","        num_replicas=\"${5:0}\",","        bucket_type=${6:BucketType.COUCHBASE},","        conflict_resolution_type=${7:ConflictResolutionType.SEQUENCE_NUMBER}))"],
+        "body": ["bucket_manager = ${1:cluster}.buckets()","","${2:bucket_manager}.create_bucket(","    CreateBucketSettings(","        name=\"${3:bucket_name}\",","        flush_enabled=${4:False},","        ram_quota_mb=${5:100},","        num_replicas=\"${6:0}\",","        bucket_type=${7:BucketType.COUCHBASE},","        conflict_resolution_type=${8:ConflictResolutionType.SEQUENCE_NUMBER}))"],
         "description": "Create a new bucket, this requires a bucket manager to be present. You can make one with the snippet @cbmkbucketmanager."
     },
     "Create Index": {

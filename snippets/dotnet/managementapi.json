@@ -1,7 +1,7 @@
 {
     "Create Collection": {
         "prefix": ["@cbcrcol"],
-        "body": ["var spec = new CollectionSpec(\"${1:scope-name}\", \"${2:collection-name}\");","","try {","    await collectionMgr.CreateCollectionAsync(spec);","}","catch (CollectionExistsException) {","    Console.WriteLine(\"Collection already exists\");","}","catch (ScopeNotFoundException) {","    Console.WriteLine(\"The specified parent scope doesn't exist\");","}"],
+        "body": ["ICouchbaseCollectionManager collectionMgr = ${1:bucket}.Collections;","","var spec = new CollectionSpec(\"${2:scope-name}\", \"${3:collection-name}\");","","try {","    await collectionMgr.CreateCollectionAsync(spec);","}","catch (CollectionExistsException) {","    Console.WriteLine(\"Collection already exists\");","}","catch (ScopeNotFoundException) {","    Console.WriteLine(\"The specified parent scope doesn't exist\");","}"],
         "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
     },
     "Create Scope": {
@@ -11,7 +11,7 @@
     },
     "Create Bucket": {
         "prefix": ["@cbcrbuck"],
-        "body": ["var bucketSettings = new BucketSettings();","bucketSettings.Name = \"${1:bucket-name}\";","bucketSettings.BucketType = ${2:BucketType.Couchbase};","bucketSettings.RamQuotaMB = ${3:100};","await bucketMgr.CreateBucketAsync(bucketSettings);"],
+        "body": ["IBucketManager bucketMgr = ${1:cluster}.Buckets;","","var bucketSettings = new BucketSettings();","bucketSettings.Name = \"${2:bucket-name}\";","bucketSettings.BucketType = ${3:BucketType.Couchbase};","bucketSettings.RamQuotaMB = ${4:100};","await bucketMgr.CreateBucketAsync(bucketSettings);"],
         "description": "Create a new bucket, this requires a bucket manager to be present, you can create one with @cbmkbucketmanager"
     },
     "Create Index": {

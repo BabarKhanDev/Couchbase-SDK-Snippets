@@ -1,7 +1,7 @@
 {
     "Create Collection": {
         "prefix": ["@cbcrcol"],
-        "body": ["collection := gocb.CollectionSpec{","    Name:      \"${1:collectionName}\",","    ScopeName: \"${2:scopeName}\",","}","","err = collections.CreateCollection(collection, nil)","if err != nil {","    if errors.Is(err, gocb.ErrCollectionExists) {","        fmt.Println(\"Collection already exists\")","    } else {","        panic(err)","    }","}"],
+        "body": ["collections := ${1:bucket}.Collections()", "","collection := gocb.CollectionSpec{","    Name:      \"${2:collectionName}\",","    ScopeName: \"${3:scopeName}\",","}","","err = collections.CreateCollection(collection, nil)","if err != nil {","    if errors.Is(err, gocb.ErrCollectionExists) {","        fmt.Println(\"Collection already exists\")","    } else {","        panic(err)","    }","}"],
         "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
     },
     "Create Scope": {
@@ -11,7 +11,7 @@
     },
     "Create Bucket": {
         "prefix": ["@cbcrbuck"],
-        "body": ["err := ${1:bucketMgr}.CreateBucket(gocb.CreateBucketSettings{","    BucketSettings: gocb.BucketSettings{","        Name:                 \"${2:name}\",","        FlushEnabled:         ${3:false},","        ReplicaIndexDisabled: ${4:true},","        RAMQuotaMB:           ${5:150},","        NumReplicas:          ${6:1},","        BucketType:           ${7:gocb.CouchbaseBucketType},","    },","    ConflictResolutionType: gocb.ConflictResolutionTypeSequenceNumber,","}, nil)","if err != nil {","    panic(err)","}"],
+        "body": ["bucketMgr := ${1:cluster}.Buckets()", "","err := bucketMgr.CreateBucket(gocb.CreateBucketSettings{","    BucketSettings: gocb.BucketSettings{","        Name:                 \"${2:name}\",","        FlushEnabled:         ${3:false},","        ReplicaIndexDisabled: ${4:true},","        RAMQuotaMB:           ${5:150},","        NumReplicas:          ${6:1},","        BucketType:           ${7:gocb.CouchbaseBucketType},","    },","    ConflictResolutionType: gocb.ConflictResolutionTypeSequenceNumber,","}, nil)","if err != nil {","    panic(err)","}"],
         "description": "Create a new bucket, this requires a bucket manager to be present, you can create one with @cbmkbucketmanager"
     },
     "Create Index": {
