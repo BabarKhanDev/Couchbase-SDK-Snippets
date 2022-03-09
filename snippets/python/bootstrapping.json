@@ -1,0 +1,7 @@
+{
+    "Create Collection": {
+        "prefix": ["@cbcon"],
+        "body": ["# needed for any cluster connection","from couchbase.cluster import Cluster, ClusterOptions","from couchbase.auth import PasswordAuthenticator","","# needed to support SQL++ query","from couchbase.cluster import QueryOptions","","# get a reference to our cluster","${1:cluster} = Cluster('${2:connection-string}', ClusterOptions(","    PasswordAuthenticator('${3:username}', '${4:password}')))","","# get a reference to our bucket","${5:bucket} = cluster.bucket('${6:bucket-name}')","","# get a reference to our collection","${7:collection} = cb.scope(\"${8:scope}\").collection(\"${9:collection}\")"],
+        "description": "Connect to a cluster and get a reference to it, a bucket, and a collection."
+    }
+}
