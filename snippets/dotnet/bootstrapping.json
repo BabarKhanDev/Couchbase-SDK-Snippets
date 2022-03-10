@@ -12,6 +12,6 @@
     "Connect to Cluster DNS SRV": {
         "prefix": ["@cbcondns"],
         "body": [],
-        "description": "Connect to a cluster using TLS and get a reference to it, a bucket, and a collection."
+        "description": "Connect to a cluster using DNS SRV and get a reference to it, a bucket, and a collection."
     }
 }
