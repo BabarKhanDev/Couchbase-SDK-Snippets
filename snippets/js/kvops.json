@@ -23,5 +23,15 @@
         "prefix": ["@cbremove"],
         "body": ["const result = await ${1:collection}.remove(${2:key},","    {","        cas: ${3:cas},","        persist_to: ${4:0},  // non-zero gives \"not implemented\"","        replicate_to: ${5:0}, // cannot replicate on single node","        timeout: ${6:5000}","    }",");"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
+    },
+    "KV Import": {
+        "prefix": ["@cbkvimp"],
+        "body": [],
+        "description": "Import all necessary KV namespace."
+    },
+    "KV Example": {
+        "prefix": ["@cbkvex"],
+        "body": [],
+        "description": "Example code that shows: inserting, upserting, getting, replacing, and removing a document. Along with all required imports."
     }
 }
