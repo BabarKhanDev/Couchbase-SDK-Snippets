@@ -26,7 +26,7 @@
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],
-        "body": [],
+        "body": ["import {","  Bucket,","  Cluster,","  Collection,","  connect,","  GetResult,","  MutationResult,","} from 'couchbase'"],
         "description": "Import all necessary KV namespace."
     },
     "KV Example": {
