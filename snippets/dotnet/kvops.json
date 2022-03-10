@@ -1,16 +1,16 @@
 {
     "Upsert Document": {
-        "prefix": ["@cbupsert"],
+        "prefix": ["@cbups"],
         "body": ["var document = new {${1:key1} = \"${2:value1}\",${3:key2} = \"${4:value2}\"};","var result = await ${5:collection}.UpsertAsync(\"${6:document-key}\", document,","    options =>","    {","        options.Expiry(TimeSpan.FromMinutes(${7:1}));","        options.Durability(PersistTo.${8:One}, ReplicateTo.${9:One});","        options.Timeout(TimeSpan.FromSeconds(${10:5}));","    }",");"],
         "description": "Create a JSON object and upsert it to a collection."
     },
     "Insert Document": {
-        "prefix": ["@cbinsert"],
+        "prefix": ["@cbins"],
         "body": ["try {","    var document = new {${1:key1} = \"${2:value1}\",${3:key2} = \"${4:value2}\"};","","    var result = await ${5:collection}.InsertAsync(\"${6:document-key}\", document,","        options =>","        {","            options.Expiry(TimeSpan.FromDays(${7:1}));","            options.Timeout(TimeSpan.FromSeconds(${8:5}));","        }","    );","}","catch (DocumentExistsException) {","    // handle exception","}"],
         "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace"],
+        "prefix": ["@cbrep"],
         "body": ["var previousResult = await ${1:collection}.GetAsync(\"${2:document-key}\");","var cas = previousResult.Cas;","","var document = new {${3:key1} = \"${4:value1}\",${5:key2} = \"${6:value2}\"};","","var result = await ${1:collection}.ReplaceAsync(\"${2:document-key}\", document,","    options =>","    {","        options.Cas(cas);","        options.Expiry(TimeSpan.FromMinutes(${7:1}));","        options.Timeout(TimeSpan.FromSeconds(${8:5}));","    }",");"],
         "description": "Create a JSON object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
@@ -20,7 +20,7 @@
         "description": "Use a key to get the value from a collection, and assign it to the variable 'content'. This will fail if no document with the specified key exists."
     },
     "Remove Document": {
-        "prefix": ["@cbremove"],
+        "prefix": ["@cbrem"],
         "body": ["var previousResult = await ${1:collection}.GetAsync(\"${2:document-key}\");","","await ${1:collection}.RemoveAsync(\"${2:document-key}\",","    options =>","    {","        options.Cas(previousResult.Cas);","        options.Timeout(TimeSpan.FromSeconds(${3:5}));","    }",");"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
     },

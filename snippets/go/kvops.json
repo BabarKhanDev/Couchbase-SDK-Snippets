@@ -1,16 +1,16 @@
 {
     "Upsert Document": {
-        "prefix": ["@cbupsert"],
+        "prefix": ["@cbups"],
         "body": ["expiryResult, err := ${1:collection}.Upsert(\"${2:document-key}\", ${3:&document}, &gocb.UpsertOptions{","    Timeout: ${4:100} * time.Millisecond,","    Expiry:  ${5:60} * time.Second,","    DurabilityLevel: gocb.DurabilityLevel${6:Majority},","})"],
         "description": "Upsert an existing document into a collection with expiry and durability."
     },
     "Insert Document": {
-        "prefix": ["@cbinsert"],
+        "prefix": ["@cbins"],
         "body": ["resultwithOptions, err := ${1:collection}.Insert(\"${2:document-key}\", ${3:&document}, &gocb.InsertOptions{","    Timeout: ${4:3} * time.Second,","})","if err != nil {","    panic(err)","}"],
         "description": "Inser an existing document into a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace"],
+        "prefix": ["@cbrep"],
         "body": ["updateGetResult, err := ${1:collection}.Get(\"${2:document-key}\", nil)","if err != nil {","    panic(err)","}","","updateResult, err := ${1:collection}.Replace(\"${2:document-key}\", ${3:doc}, &gocb.ReplaceOptions{","    Cas: updateGetResult.Cas(),","})"],
         "description": "Get and replace a document with cas, this will fail if no document with the specified key exists."
     },
@@ -20,7 +20,7 @@
         "description": "Use a key to get a document from a collection using timeout, this will fail if no document with the specified key exists."
     },
     "Remove Document": {
-        "prefix": ["@cbremove"],
+        "prefix": ["@cbrem"],
         "body": ["removeResult, err := ${1:collection}.Remove(\"${2:document-key}\", &gocb.RemoveOptions{","    Timeout:         ${3:100} * time.Millisecond,","    DurabilityLevel: gocb.DurabilityLevel${4:Majority},","})","if err != nil {","    panic(err)","}"],
         "description": "Use a key to remove a document from a collection using durability, this will fail if no document with the specified key exists."
     },

@@ -1,16 +1,16 @@
 {
     "Upsert Document": {
-        "prefix": ["@cbupsert"],
+        "prefix": ["@cbups"],
         "body": ["JsonObject content = JsonObject.create()","    .put(\"${1:key}\", \"${2:value}\")","","MutationResult result = ${3:collection}.upsert(\"${4:document-key}\", content);"],
         "description": "Create a JSON object and upsert it to a collection."
     },
     "Insert Document": {
-        "prefix": ["@cbinsert"],
+        "prefix": ["@cbins"],
         "body": ["try {","    JsonObject content = JsonObject.create()","        .put(\"${1:key}\", \"${2:value}\");","    MutationResult insertResult = ${3:collection}.insert(\"${4:document-key}\", content);","} catch (DocumentExistsException ex) {","    System.err.println(\"The document already exists!\");","} catch (CouchbaseException ex) {","    System.err.println(\"Something else happened: \" + ex);","}"],
         "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace"],
+        "prefix": ["@cbrep"],
         "body": ["for(int i = 0; i < ${1:maxAttempts}; i++) {","    GetResult found = ${2:collection}.get(\"${3:document-key}\");","    JsonObject content = found.contentAsObject();","","    try {","        ${2:collection}.replace(\"${3:document-key}\", ${4:JsonObject-Document}, replaceOptions().cas(found.cas()));","        break; // if successful, break out of the retry loop","    } catch (CasMismatchException ex) {","        // don't do anything, we'll retry the loop","    }","}"],
         "description": "Use an existing JsonObject document replace an existing document in a collection, this will retry if there is a cas mismatch."
     },
@@ -20,7 +20,7 @@
         "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
     },
     "Remove Document": {
-        "prefix": ["@cbremove"],
+        "prefix": ["@cbrem"],
         "body": ["try {","    ${1:collection}.remove(\"${2:document-key}\");","} catch (DocumentNotFoundException ex) {","    System.out.println(\"Document did not exist when trying to remove\");","}"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
     },

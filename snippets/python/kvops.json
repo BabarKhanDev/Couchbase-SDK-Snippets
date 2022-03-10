@@ -1,16 +1,16 @@
 {
     "Upsert Document": {
-        "prefix": ["@cbupsert"],
+        "prefix": ["@cbups"],
         "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","opts = UpsertOptions(durability=ServerDurability(Durability.${5:MAJORITY}))","result = ${6:collection}.upsert(\"${7:document-key}\", document, opts)"],
         "description": "Create a document object and upsert it to a collection with durability options."
     },
     "Insert Document": {
-        "prefix": ["@cbinsert"],
+        "prefix": ["@cbins"],
         "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","opts = InsertOptions(timeout=timedelta(seconds=${5:5}))","result = ${6:collection}.insert(\"${7:document-key}\",","                           document,","                           opts,","                           expiry=timedelta(seconds=${8:30}))"],
         "description": "Create a document object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace"],
+        "prefix": ["@cbrep"],
         "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","result = ${5:collection}.replace(","    \"${6:document-key}\",","    document,","    cas=${7:cas},","    timeout=timedelta(","        minutes=${8:1}))"],
         "description": "Create a document object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
@@ -20,7 +20,7 @@
         "description": "Use a key to get a document object from a collection and assign it to a dictionary, this will fail if no document with the specified key exists."
     },
     "Remove Document": {
-        "prefix": ["@cbremove"],
+        "prefix": ["@cbrem"],
         "body": ["result = ${1:collection}.remove(","    \"${2:document-key}\",","    RemoveOptions(","        cas=${3:cas},","        durability=ServerDurability(","            Durability.${4:MAJORITY})))"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
     },
