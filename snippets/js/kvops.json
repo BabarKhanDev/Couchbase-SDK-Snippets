@@ -26,7 +26,7 @@
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],
-        "body": [],
+        "body": ["var couchbase = require('couchbase');"],
         "description": "Import all necessary KV namespace."
     },
     "KV Example": {

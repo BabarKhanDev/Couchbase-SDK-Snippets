@@ -26,7 +26,7 @@
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],
-        "body": [],
+        "body": ["using System;","using System.Threading.Tasks;","using Couchbase;","using Couchbase.KeyValue;","using Couchbase.Core.Exceptions.KeyValue;"],
         "description": "Import all necessary KV namespace."
     },
     "KV Example": {
