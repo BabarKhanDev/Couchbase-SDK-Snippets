@@ -10,7 +10,7 @@
         "description": "Inser an existing document into a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace", "@cas"],
+        "prefix": ["@cbreplace"],
         "body": ["updateGetResult, err := ${1:collection}.Get(\"${2:document-key}\", nil)","if err != nil {","    panic(err)","}","","updateResult, err := ${1:collection}.Replace(\"${2:document-key}\", ${3:doc}, &gocb.ReplaceOptions{","    Cas: updateGetResult.Cas(),","})"],
         "description": "Get and replace a document with cas, this will fail if no document with the specified key exists."
     },

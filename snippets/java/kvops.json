@@ -10,7 +10,7 @@
         "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
-        "prefix": ["@cbreplace", "@cbcas"],
+        "prefix": ["@cbreplace"],
         "body": ["for(int i = 0; i < ${1:maxAttempts}; i++) {","    GetResult found = ${2:collection}.get(\"${3:document-key}\");","    JsonObject content = found.contentAsObject();","","    try {","        ${2:collection}.replace(\"${3:document-key}\", ${4:JsonObject-Document}, replaceOptions().cas(found.cas()));","        break; // if successful, break out of the retry loop","    } catch (CasMismatchException ex) {","        // don't do anything, we'll retry the loop","    }","}"],
         "description": "Use an existing JsonObject document replace an existing document in a collection, this will retry if there is a cas mismatch."
     },
