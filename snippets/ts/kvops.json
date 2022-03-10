@@ -1,0 +1,27 @@
+{
+    "Upsert Document": {
+        "prefix": ["@cbupsert"],
+        "body": [],
+        "description": "Create a JSON object and upsert it to a collection."
+    },
+    "Insert Document": {
+        "prefix": ["@cbinsert"],
+        "body": [],
+        "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
+    },
+    "Replace Document": {
+        "prefix": ["@cbreplace"],
+        "body": [],
+        "description": "Use an existing JsonObject document replace an existing document in a collection, this will retry if there is a cas mismatch."
+    },
+    "Retrieve Document": {
+        "prefix": ["@cbget"],
+        "body": [],
+        "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
+    },
+    "Remove Document": {
+        "prefix": ["@cbremove"],
+        "body": [],
+        "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
+    }
+}
