@@ -43,6 +43,7 @@
 			{"language": "javascript","path": "./snippets/js/analytics.json"},
 			{"language": "javascript","path": "./snippets/js/fts.json"},
 			{"language": "javascript","path": "./snippets/js/bootstrapping.json"},
+			{"language": "typescript","path": "./snippets/ts/bootstrapping.json"},
 			{"language": "go","path": "./snippets/go/managementapi.json"},
 			{"language": "go","path": "./snippets/go/kvops.json"},
 			{"language": "go","path": "./snippets/go/subdocops.json"},
