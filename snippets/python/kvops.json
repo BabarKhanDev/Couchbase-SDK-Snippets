@@ -23,5 +23,10 @@
         "prefix": ["@cbremove"],
         "body": ["result = ${1:collection}.remove(","    \"${2:document-key}\",","    RemoveOptions(","        cas=${3:cas},","        durability=ServerDurability(","            Durability.${4:MAJORITY})))"],
         "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
+    },
+    "KV Import": {
+        "prefix": ["@cbkvimp"],
+        "body": ["from datetime import timedelta","","from couchbase.durability import (Durability, ServerDurability, ClientDurability, ReplicateTo, PersistTo)","from couchbase.exceptions import CouchbaseException, CASMismatchException","from couchbase.cluster import Cluster","from couchbase.auth import PasswordAuthenticator","from couchbase.collection import (","    InsertOptions,","    ReplaceOptions,","    UpsertOptions,","    GetOptions,","    RemoveOptions,","    IncrementOptions,","    DecrementOptions)","from couchbase.collection import DeltaValue, SignedInt64"],
+        "description": "Import all necessary KV namespace."
     }
 }
