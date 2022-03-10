@@ -11,7 +11,7 @@
     },
     "Connect to Cluster DNS SRV": {
         "prefix": ["@cbcondns"],
-        "body": [],
+        "body": ["import com.couchbase.client.java.*;","","ClusterEnvironment env = ClusterEnvironment.builder()","    .ioConfig(IoConfig.enableDnsSrv(true)).build();","","Cluster ${2:cluster} = Cluster.connect({${3:connectionString},","    ClusterOptions.clusterOptions(${4:username}, ${5:password}).environment(env));","","// get a bucket reference","Bucket ${6:bucket} = ${2:cluster}.bucket(${7:bucketName});","","// get a user defined collection reference","Scope ${8:scope} = ${6:bucket}.scope(${9:scopeName});","Collection ${10:collection} = ${8:scope}.collection(${11:collectionName});"],
         "description": "Connect to a cluster using DNS SRV and get a reference to it, a bucket, and a collection."
     }
 }
