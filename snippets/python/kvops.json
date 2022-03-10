@@ -14,7 +14,7 @@
         "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","result = ${5:collection}.replace(","    \"${6:document-key}\",","    document,","    cas=${7:cas},","    timeout=timedelta(","        minutes=${8:1}))"],
         "description": "Create a document object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
-    "Retrieve Document": {
+    "Get Document": {
         "prefix": ["@cbget"],
         "body": ["opts = GetOptions(timeout=timedelta(seconds=${1:5}))","result = ${2:collection}.get(\"${3:document-key}\", opts)","print(result.content_as[dict])"],
         "description": "Use a key to get a document object from a collection and assign it to a dictionary, this will fail if no document with the specified key exists."
@@ -28,5 +28,10 @@
         "prefix": ["@cbkvimp"],
         "body": ["from datetime import timedelta","","from couchbase.durability import (Durability, ServerDurability, ClientDurability, ReplicateTo, PersistTo)","from couchbase.exceptions import CouchbaseException, CASMismatchException","from couchbase.cluster import Cluster","from couchbase.auth import PasswordAuthenticator","from couchbase.collection import (","    InsertOptions,","    ReplaceOptions,","    UpsertOptions,","    GetOptions,","    RemoveOptions,","    IncrementOptions,","    DecrementOptions)","from couchbase.collection import DeltaValue, SignedInt64"],
         "description": "Import all necessary KV namespace."
+    },
+    "KV Example": {
+        "prefix": ["@cbkvex"],
+        "body": ["from datetime import timedelta","","from couchbase.durability import (Durability, ServerDurability, ClientDurability, ReplicateTo, PersistTo)","from couchbase.exceptions import CouchbaseException, CASMismatchException","from couchbase.cluster import Cluster","from couchbase.auth import PasswordAuthenticator","from couchbase.collection import (","    InsertOptions,","    ReplaceOptions,","    UpsertOptions,","    GetOptions,","    RemoveOptions,","    IncrementOptions,","    DecrementOptions)","from couchbase.collection import DeltaValue, SignedInt64","","#Insert a document","document = {\"foo\": \"bar\"}","opts = InsertOptions(timeout=timedelta(seconds=5))","result = ${1:collection}.insert(\"${2:document-key}\",","                           document,","                           opts,","                           expiry=timedelta(seconds=30))","","#Upsert a document","document = {\"bar\": \"foo\"}","result = ${1:collection}.upsert(\"${2:document-key}\", document)","","#Get a document","opts = GetOptions(timeout=timedelta(seconds=5))","result = ${1:collection}.get(\"${2:document-key}\", opts)","print(result.content_as[dict])","","#Replace a document","document = {\"foobar\": \"barfoo\"}","result = ${1:collection}.replace(","    \"${2:document-key}\",","    document,","    cas=${3:cas},","    timeout=timedelta(","        minutes=1))","","#Remove a document","result = ${1:collection}.remove(","    \"${2:document-key}\",","    RemoveOptions(","        cas=${4:cas},","        durability=ServerDurability(","            Durability.MAJORITY)))"],
+        "description": ""
     }
 }
