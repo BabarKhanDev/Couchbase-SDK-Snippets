@@ -14,7 +14,7 @@
         "body": ["const result = await ${1:collection}.replace(${2:key},","    ${3:document},","    { cas: ${4:cas}, expiry: ${5:60}, timeout: ${6:5000} }",");"],
         "description": "Create a JSON object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
-    "Retrieve Document": {
+    "Get Document": {
         "prefix": ["@cbget"],
         "body": ["const result = await ${1:collection}.get(${2:key}, { timeout: ${3:1000} });","document = result.value;"],
         "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."

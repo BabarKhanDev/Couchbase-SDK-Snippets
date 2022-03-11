@@ -14,7 +14,7 @@
         "body": ["for(int i = 0; i < ${1:maxAttempts}; i++) {","    GetResult found = ${2:collection}.get(\"${3:document-key}\");","    JsonObject content = found.contentAsObject();","","    try {","        ${2:collection}.replace(\"${3:document-key}\", ${4:JsonObject-Document}, replaceOptions().cas(found.cas()));","        break; // if successful, break out of the retry loop","    } catch (CasMismatchException ex) {","        // don't do anything, we'll retry the loop","    }","}"],
         "description": "Use an existing JsonObject document replace an existing document in a collection, this will retry if there is a cas mismatch."
     },
-    "Retrieve Document": {
+    "Get Document": {
         "prefix": ["@cbget"],
         "body": ["try {","    GetResult getResult = ${1:collection}.get(\"${2:document-key}\");","    JsonObject content = getResult.contentAsObject()","} catch (DocumentNotFoundException ex) {","    System.out.println(\"Document not found!\");","}"],
         "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."

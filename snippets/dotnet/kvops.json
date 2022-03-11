@@ -14,7 +14,7 @@
         "body": ["var previousResult = await ${1:collection}.GetAsync(\"${2:document-key}\");","var cas = previousResult.Cas;","","var document = new {${3:key1} = \"${4:value1}\",${5:key2} = \"${6:value2}\"};","","var result = await ${1:collection}.ReplaceAsync(\"${2:document-key}\", document,","    options =>","    {","        options.Cas(cas);","        options.Expiry(TimeSpan.FromMinutes(${7:1}));","        options.Timeout(TimeSpan.FromSeconds(${8:5}));","    }",");"],
         "description": "Create a JSON object and replace a document in a collection, this will fail if no document with the specified key exists."
     },
-    "Retrieve Document": {
+    "Get Document": {
         "prefix": ["@cbget"],
         "body": ["var result = await ${1:collection}.GetAsync(\"${2:string-key}\",","    options =>","    {","        options.Timeout(TimeSpan.FromSeconds(${3:5}));","    }",");","var content = result.ContentAs<string>();"],
         "description": "Use a key to get the value from a collection, and assign it to the variable 'content'. This will fail if no document with the specified key exists."
