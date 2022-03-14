@@ -36,7 +36,7 @@
     },
     "JSON Transcoder": {
         "prefix": ["@cbtranscoder"],
-        "body": [],
+        "body": ["user := User{Name: \"John Smith\", Age: 27}","transcoder := gocb.NewRawJSONTranscoder()","","b, err := ffjson.Marshal(user)","if err != nil {","    panic(err)","}","","_, err = ${1:collection}.Upsert(\"john-smith\", b, &gocb.UpsertOptions{","    Transcoder: transcoder,","})","if err != nil {","    panic(err)","}"],
         "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
     }
 }
