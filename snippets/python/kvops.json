@@ -36,7 +36,7 @@
     },
     "JSON Transcoder": {
         "prefix": ["@cbtranscoder"],
-        "body": [],
+        "body": ["transcoder = RawJSONTranscoder()","user = {\"name\": \"John Smith\", \"age\": 27}","","data = orjson.dumps(user)","try:","    _ = ${1:collection}.upsert(","        \"john-smith\", data, UpsertOptions(transcoder=transcoder))","except (ValueFormatException, CouchbaseException) as ex:","    traceback.print_exc()"],
         "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
     }
 }
