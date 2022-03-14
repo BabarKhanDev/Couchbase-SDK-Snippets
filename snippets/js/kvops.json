@@ -33,5 +33,10 @@
         "prefix": ["@cbkvex"],
         "body": ["var couchbase = require('couchbase');","","//Insert a Document","var result = await ${1:collection}.insert(${2:key}, {'foo': 'bar'},","    { timeout: 10000 } // 10 seconds",");","","//Upsert a Document","var result = await ${1:collection}.upsert(${2:key}, {'bar':'foo'},","    {","        expiry: 60,  // 60 seconds,","        durabilityLevel: couchbase.DurabilityLevel.None, // Majority etc.","        timeout: 5000","    } // 5 seconds",");","","//Get a Document","var result = await ${1:collection}.get(${2:key}, { timeout: 1000 });","document = result.value;", "cas = result.cas;","","//Replace a Document","var result = await ${1:collection}.replace(${2:key},","    {'foobar': 'barfoo'},","    { cas: cas, expiry: 60, timeout: 5000 }",");", "cas = result.cas;","","//Remove a Document","var result = await ${1:collection}.remove(${2:key},","    {","        cas: cas,","        persist_to: 0,  // non-zero gives \"not implemented\"","        replicate_to: 0, // cannot replicate on single node","        timeout: 5000","    }",");"],
         "description": "Example code that shows: inserting, upserting, getting, replacing, and removing a document. Along with all required imports."
+    },
+    "JSON Transcoder": {
+        "prefix": ["@cbtranscoder"],
+        "body": [],
+        "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
     }
 }
