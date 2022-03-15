@@ -1,18 +1,28 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Get(\"${3:path}\")",");","","string output = result.ContentAs<string>(0);","WriteLine(country);"],
-        "description": "Get a sub document value by providing document and attribute keys."
-    },
-    "Check Path Exists": {
-        "prefix": ["@cbcheckpath"],
-        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs =>","    specs.Exists(\"${3:path}\")",");","","bool exists = result.ContentAs<bool>(0);"],
-        "description": "Check if a path exists for a given document key."
+        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs => {","    specs.Get(\"${3:path}\");","    specs.Exists(\"${4:path}\");","});","","string content = result.ContentAs<string>(0);","bool exists = result.ContentAs<bool>(1);"],
+        "description": "Get or check the existence of a sub document value by providing document key and path."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
         "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Upsert(\"${3:path}\", \"${4:value}\")",");"],
         "description": "Modify the value of an existing path or create it if it does not exist."
+    },
+    "Sub Doc Insert": {
+        "prefix": ["@cbsubins"],
+        "body": [],
+        "description": "Add a new value to a path that does not exist."
+    },
+    "Sub Doc Remove": {
+        "prefix": ["@cbsubrem"],
+        "body": [],
+        "description": "Modify the value of an existing path or create it if it does not exist."
+    },
+    "Array Operations": {
+        "prefix": ["@cbsubarrops"],
+        "body": [],
+        "description": "Example code showing different array operations."
     },
     "Array Append": {
         "prefix": ["@cbsubarrapp"],
