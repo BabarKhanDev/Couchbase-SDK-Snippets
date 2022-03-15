@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": ["opts = InsertOptions(timeout=timedelta(seconds=5))","result = ${1:collection}.insert(\"${2:document-key}\",","                           ${3:document},","                           expiry=timedelta(seconds=${4:30}))"],
-        "description": "Example code that shows how to use Document Expiration"
+        "body": ["result = ${1:collection}.touch(\"${2:document-key}\", timedelta(seconds=${3:10}))"],
+        "description": "Use Document Expiration"
     }
 }

@@ -42,6 +42,6 @@
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
         "body": [],
-        "description": "Example code that shows how to use Document Expiration"
+        "description": "Use Document Expiration"
     }
 }

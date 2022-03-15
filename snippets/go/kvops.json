@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": ["resultwithOptions, err := ${1:collection}.Insert(\"${2:document-key}\", ${3:document}, &gocb.InsertOptions{","    Expiry:  ${4:60} * time.Second,","})","if err != nil {","    panic(err)","}"],
-        "description": "Example code that shows how to use Document Expiration"
+        "body": ["touchResult, err := ${1:collection}.Touch(\"${2:{document-key}\", ${3:60}*time.Second, &gocb.TouchOptions{","    Timeout: 100 * time.Millisecond,","})","if err != nil {","    panic(err)","}"],
+        "description": "Use Document Expiration"
     }
 }
