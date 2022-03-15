@@ -11,17 +11,17 @@
     },
     "Sub Doc Insert": {
         "prefix": ["@cbsubins"],
-        "body": [],
+        "body": ["try {","    await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","        specs.Insert(\"${3:path}\", \"${4:value}\")","    );","}","catch (DocumentExistsException) {","    // handle exception","}"],
         "description": "Add a new value to a path that does not exist."
     },
     "Sub Doc Remove": {
         "prefix": ["@cbsubrem"],
-        "body": [],
+        "body": ["try {","    await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs => {","        specs.Remove(\"${3:path}\");","    });","}","catch (DocumentDoesNotExistsException) {","    // handle exception","}"],
         "description": "Modify the value of an existing path or create it if it does not exist."
     },
     "Array Operations": {
         "prefix": ["@cbsubarrops"],
-        "body": [],
+        "body": ["//Append to an array","await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayAppend(\"${3:path}\", new [] {${4:value}})",");","","//Prepend to an array","await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayPrepend(\"${5:path}\", new [] {${6:value}})",");","","//Insert into an array","await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayInsert(\"${7:path[index]}\", new[] {${8:value}})",");"],
         "description": "Example code showing different array operations."
     },
     "Array Append": {
