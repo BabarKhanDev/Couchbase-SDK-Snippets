@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": [],
+        "body": ["resultwithOptions, err := ${1:collection}.Insert(\"${2:document-key}\", ${3:document}, &gocb.InsertOptions{","    Expiry:  ${4:60} * time.Second,","})","if err != nil {","    panic(err)","}"],
         "description": "Example code that shows how to use Document Expiration"
     }
 }
