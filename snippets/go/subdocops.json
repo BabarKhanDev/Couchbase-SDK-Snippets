@@ -1,13 +1,23 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["ops := []gocb.LookupInSpec{","    gocb.GetSpec(\"${1:path}\", &gocb.GetSpecOptions{}),","}","getResult, err := ${2:collection}.LookupIn(\"${3:document-key}\", ops, &gocb.LookupInOptions{})","if err != nil {","    panic(err)","}"],
-        "description": "Get a sub document value by providing document and attribute keys."
+        "body": [],
+        "description": "Get or check the existence of a sub document value by providing document key and path."
     },
-    "Check Path Exists": {
-        "prefix": ["@cbcheckpath"],
-        "body": ["ops = []gocb.LookupInSpec{","    gocb.ExistsSpec(\"${1:path}\", &gocb.ExistsSpecOptions{}),","}","existsResult, err := ${2:collection}.LookupIn(\"${3:document-key}\", ops, &gocb.LookupInOptions{})","if err != nil {","    panic(err)","}","","exists := existsResult.Exists(0)","","fmt.Printf(\"Path exists? %t\\n\", exists)"],
-        "description": "Check if a path exists for a given document key."
+    "Sub Doc Insert": {
+        "prefix": ["@cbsubins"],
+        "body": [],
+        "description": "Add a new value to a path that does not exist."
+    },
+    "Sub Doc Remove": {
+        "prefix": ["@cbsubrem"],
+        "body": [],
+        "description": "Modify the value of an existing path or create it if it does not exist."
+    },
+    "Array Operations": {
+        "prefix": ["@cbsubarrops"],
+        "body": [],
+        "description": "Example code showing different array operations."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],

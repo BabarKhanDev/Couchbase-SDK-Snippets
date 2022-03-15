@@ -1,13 +1,23 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["result = ${1:collection}.lookup_in(\"${2:document-key}\",","                              [SD.get(\"${3:path}\")])","output = result.content_as[str](0)"],
-        "description": "Get a sub document value by providing document and attribute keys."
+        "body": ["Get or check the existence of a sub document value by providing document key and path."],
+        "description": "Get or check the existence of a sub document value by providing document key and path."
     },
-    "Check Path Exists": {
-        "prefix": ["@cbcheckpath"],
-        "body": ["result = ${1:collection}.lookup_in(","    \"${2:document-key}\", [","        SD.exists(\"${3:path}\")])","print('Path exists: {}.'.format(result.exists(0)))"],
-        "description": "Check if a path exists for a given document key."
+    "Sub Doc Insert": {
+        "prefix": ["@cbsubins"],
+        "body": [],
+        "description": "Add a new value to a path that does not exist."
+    },
+    "Sub Doc Remove": {
+        "prefix": ["@cbsubrem"],
+        "body": [],
+        "description": "Modify the value of an existing path or create it if it does not exist."
+    },
+    "Array Operations": {
+        "prefix": ["@cbsubarrops"],
+        "body": [],
+        "description": "Example code showing different array operations."
     },
     "Sub Doc Upsert": {
         "prefix": ["@cbsubupsert"],
