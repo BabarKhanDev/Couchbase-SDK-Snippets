@@ -38,5 +38,10 @@
         "prefix": ["@cbtranscoder"],
         "body": [],
         "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
+    },
+    "Document Expiration": {
+        "prefix": ["@cbsetexp"],
+        "body": [],
+        "description": "Example code that shows how to use Document Expiration"
     }
 }

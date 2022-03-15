@@ -38,5 +38,10 @@
         "prefix": ["@cbtranscoder"],
         "body": ["var userBytes = JsonSerializer.SerializeToUtf8Bytes(new User","{","    Name = \"John Smith\",","    Age = 27","}, typeof(User));","","await ${1:collection}.UpsertAsync(\"john-smith\", userBytes, options => options.Transcoder(new RawJsonTranscoder()));"],
         "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
+    },
+    "Document Expiration": {
+        "prefix": ["@cbsetexp"],
+        "body": [],
+        "description": "Example code that shows how to use Document Expiration"
     }
 }

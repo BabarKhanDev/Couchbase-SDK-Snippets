@@ -38,5 +38,10 @@
         "prefix": ["@cbtranscoder"],
         "body": ["// User is a simple POJO","// You may wish to replace this with your own object","User user = new User(\"John Smith\", 27);","","Gson gson = new Gson();","String json = gson.toJson(user);","","${1:collection}.upsert(\"john-smith\", json, UpsertOptions.upsertOptions().transcoder(RawJsonTranscoder.INSTANCE));"],
         "description": "Example code that shows how to use a RawJSONTranscoder on an upsert operation."
+    },
+    "Document Expiration": {
+        "prefix": ["@cbsetexp"],
+        "body": [],
+        "description": "Example code that shows how to use Document Expiration"
     }
 }
