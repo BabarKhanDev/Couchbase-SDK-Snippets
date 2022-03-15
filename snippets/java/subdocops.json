@@ -39,6 +39,11 @@
         "body": ["MutateInResult result = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayInsert(\"${3:path[index]}\", Collections.singletonList(\"${4:value}\"))));"],
         "description": "Insert a new element into an array at a specific position."
     },
+    "Array Operations": {
+        "prefix": ["@cbsubarrops"],
+        "body": ["//Append to an array","MutationResult result1 = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayAppend(\"${3:path}\", Collections.singletonList(\"${4:value}\"))));","","//Prepend to an array","MutationResult result2 = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayPrepend(\"${5:path}\", Collections.singletonList(\"${6:value}\"))));","","//Insert into an array","MutateInResult result3 = ${1:collection}.mutateIn(\"${2:document-key}\",","    Collections.singletonList(arrayInsert(\"${7:path[index]}\", Collections.singletonList(\"${8:value}\"))));"],
+        "description": "Example code showing different array operations."
+    },
     "Sub Doc Incrementation": {
         "prefix": ["@cbsubinc"],
         "body": ["MutateInResult result = ${1:collection}.mutateIn(\"${2:document-key}\", Collections.singletonList(increment(\"${3:path}\", ${4:value})));","// Counter operations return the updated count","Long count = result.contentAs(0, Long.class);"],
