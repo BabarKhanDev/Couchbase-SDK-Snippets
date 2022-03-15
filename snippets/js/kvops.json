@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": [],
+        "body": ["const result = await ${1:collection}.insert(${2:document-key}, ${3:document},","    { timeout: 10000, expiry: ${4:60} }",");"],
         "description": "Example code that shows how to use Document Expiration"
     }
 }
