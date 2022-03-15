@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": [],
+        "body": ["try {","    var result = await ${1:collection}.InsertAsync(\"${2:document-key}\", ${3:document},","        options =>","        {","            options.Expiry(TimeSpan.FromDays(${4:1}));","            options.Timeout(TimeSpan.FromSeconds(5));","        }","    );","}","catch (DocumentExistsException) {","    // handle exception","}"],
         "description": "Example code that shows how to use Document Expiration"
     }
 }
