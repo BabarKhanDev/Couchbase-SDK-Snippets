@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": ["GetResult result = ${1:collection}.getAndTouch(\"${2:document-key}\", Duration.ofDays(${3:1}));"],
+        "body": ["try {","    GetResult result = ${1:collection}.getAndTouch(\"${2:document-key}\", Duration.ofDays(${3:1}));","} catch (DocumentNotFoundException ex) {","    System.out.println(\"Document not found!\");","}"],
         "description": "Use Document Expiration"
     }
 }
