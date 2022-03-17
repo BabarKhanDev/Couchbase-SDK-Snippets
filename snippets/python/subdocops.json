@@ -1,7 +1,7 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["result = ${1:collection}.lookup_in(","    \"${2:document-key}\",","    [SD.get(\"${3:path}\"),","     SD.exists(\"${3:path}\")])","","print(\"{0}\".format(result.content_as[str](0)))","print(\"Path exists: {}.\".format(result.exists(1)))"],
+        "body": ["try:","    result = ${1:collection}.lookup_in(","        \"${2:document-key}\",","        [SD.get(\"${3:path}\"),","         SD.exists(\"${3:path}\")])","","    print(\"{0}\".format(result.content_as[str](0)))","    print(\"Path exists: {}.\".format(result.exists(1)))","except PathNotFoundException:","    print(\"Path not found, cannot use get.\")"],
         "description": "Get or check the existence of a sub document value by providing document key and path."
     },
     "Sub Doc Insert": {
