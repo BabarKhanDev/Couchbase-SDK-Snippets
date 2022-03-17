@@ -5,8 +5,8 @@
         "description": "Create a JSON object and upsert it to a collection."
     },
     "Insert Document": {
-        "prefix": ["@cbinså"],
-        "body": ["const result = await ${1:collection}.insert(${2:key}, ${3:document},","    { timeout: ${4:10000} } // 10 seconds",");"],
+        "prefix": ["@cbins"],
+        "body": ["try {","    const result = await ${1:collection}.insert(${2:key}, ${3:document},","        { timeout: ${4:10000} } // 10 seconds",");","} catch (e) {","    if (e instanceof couchbase.DocumentExistsError) {","        console.log('Document exists...')","    } else {","        throw e","    }","}"],
         "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
@@ -16,7 +16,7 @@
     },
     "Get Document": {
         "prefix": ["@cbget"],
-        "body": ["const result = await ${1:collection}.get(${2:key}, { timeout: ${3:1000} });","document = result.value;"],
+        "body": ["try {","    const result = await ${1:collection}.get(${2:key}, { timeout: ${3:1000} });","    document = result.value;","} catch (e) {","    if (e instanceof couchbase.DocumentNotFoundError) {","        console.log('Document not found...')","    } else {","        throw e","    }","}"],
         "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
     },
     "Remove Document": {
