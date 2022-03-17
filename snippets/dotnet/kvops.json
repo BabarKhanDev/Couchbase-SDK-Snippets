@@ -16,7 +16,7 @@
     },
     "Get Document": {
         "prefix": ["@cbget"],
-        "body": ["var result = await ${1:collection}.GetAsync(\"${2:string-key}\",","    options =>","    {","        options.Timeout(TimeSpan.FromSeconds(${3:5}));","    }",");","var content = result.ContentAs<string>();"],
+        "body": ["try {","    var result = await ${1:collection}.GetAsync(\"${2:string-key}\",","        options =>","        {","            options.Timeout(TimeSpan.FromSeconds(${3:5}));","        }","    );","    var content = result.ContentAs<string>();","}","catch (DocumentNotFoundException) {","    // handle exception"],
         "description": "Use a key to get the value from a collection, and assign it to the variable 'content'. This will fail if no document with the specified key exists."
     },
     "Remove Document": {
