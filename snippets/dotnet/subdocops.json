@@ -1,7 +1,7 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs => {","    specs.Get(\"${3:path}\");","    specs.Exists(\"${4:path}\");","});","","string content = result.ContentAs<string>(0);","bool exists = result.ContentAs<bool>(1);"],
+        "body": ["try {","    var result = await ${1:collection}.LookupInAsync(\"${2:document-key}\", specs => {","        specs.Get(\"${3:path}\");","        specs.Exists(\"${3:path}\");","    });","","    string content = result.ContentAs<string>(0);","    bool exists = result.ContentAs<bool>(1);","}","catch (DocumentNotFoundException) {","    // handle exception"],
         "description": "Get or check the existence of a sub document value by providing document key and path."
     },
     "Sub Doc Upsert": {

@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": ["await ${1:collection}.TouchAsync(\"${2:document-key}\", TimeSpan.FromSeconds(${3:30}),","    options =>","    {","        options.Timeout(TimeSpan.FromSeconds(5));","    }",");"],
+        "body": ["try {","    await ${1:collection}.TouchAsync(\"${2:document-key}\", TimeSpan.FromSeconds(${3:30}),","        options =>","        {","            options.Timeout(TimeSpan.FromSeconds(5));","        }","    );","}","catch (DocumentNotFoundException) {","    // handle exception"],
         "description": "Use Document Expiration"
     }
 }
