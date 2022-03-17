@@ -1,7 +1,7 @@
 {
     "Sub Doc Get": {
         "prefix": ["@cbsubget"],
-        "body": ["var result = await ${1:collection}.lookupIn('${2:document-key}', [","    couchbase.LookupInSpec.get('${3:path}'),","    couchbase.LookupInSpec.exists('${4:path}'),","])","","console.log(result.content[0].value)","console.log('Path exists?', result.content[1].value)"],
+        "body": ["try {","    var result = await ${1:collection}.lookupIn('${2:document-key}', [","        couchbase.LookupInSpec.get('${3:path}'),","        couchbase.LookupInSpec.exists('${4:path}'),","    ])","","    console.log(result.content[0].value)","    console.log('Path exists?', result.content[1].value)","} catch (e) {","    if (e instanceof couchbase.PathNotFoundError) {","        console.log('Path not found...')","    } else {","        throw e","    }","}"],
         "description": "Get or check the existence of a sub document value by providing document key and path."
     },
     "Sub Doc Insert": {
