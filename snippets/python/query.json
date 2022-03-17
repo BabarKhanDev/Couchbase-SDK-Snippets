@@ -1,12 +1,32 @@
 {
     "Create SQL++ Query": {
-        "prefix": ["@cbquery"],
+        "prefix": ["@cbq"],
         "body": ["result = ${1:cluster}.query(","    \"${2:query}\",","    \"${3:parameters}\"","    )"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
-        "prefix": ["@cbqueryopts"],
+        "prefix": ["@cbqopts"],
         "body": ["result = ${1:cluster}.query(","    \"${2:query}\",","    QueryOptions(","        scan_consistency = $3,","        client_context_id = $4,","        positional_parameters = $5,","        named_parameters = $6,","        priority = $7,","        raw = $8,","        read_only = $9,","        adhoc = $10,","        consistent_with = $11,","        max_parallelism = $12,","        metrics = $13,","        pipeline_batch = $14,","        pipeline_cap = $15,","        profile = $16,","        scan_wait = $17,","        scan_cap = $18,","        query_context = $19","        ))"],
         "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
+    },
+    "SQL++ Query With Parameters": {
+        "prefix": ["@cbqparam"],
+        "body": [],
+        "description": "Use parameterised SQL++ to query the Couchbase Cluster."
+    },
+    "SQL++ Query with FTS": {
+        "prefix": ["@cbqfts"],
+        "body": [],
+        "description": "Use SQL++ to query the Couchbase Cluster with full text search."
+    },
+    "SQL++ Query Import": {
+        "prefix": ["@cbqimp"],
+        "body": [],
+        "description": "Import all necessary query namespaces"
+    },
+    "SQL++ Query Example": {
+        "prefix": ["@cbqex"],
+        "body": [],
+        "description": "Example code that shows..."
     }
 }
