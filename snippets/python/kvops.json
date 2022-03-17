@@ -6,7 +6,7 @@
     },
     "Insert Document": {
         "prefix": ["@cbins"],
-        "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","opts = InsertOptions(timeout=timedelta(seconds=${5:5}))","result = ${6:collection}.insert(\"${7:document-key}\",","                           document,","                           opts,","                           expiry=timedelta(seconds=${8:30}))"],
+        "body": ["try:","    document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","    opts = InsertOptions(timeout=timedelta(seconds=${5:5}))","    result = ${6:collection}.insert(\"${7:document-key}\","    ,"                               document,"    ,"                               opts,"    ,"                               expiry=timedelta(seconds=${8:30}))","except DocumentExistsException:","    print(\"Document exists, cannot use insert.\")"],
         "description": "Create a document object and insert it to a collection, this will fail if a document with the same key already exists."
     },
     "Replace Document": {
