@@ -41,7 +41,7 @@
     },
     "Document Expiration": {
         "prefix": ["@cbsetexp"],
-        "body": ["result = ${1:collection}.touch(\"${2:document-key}\", timedelta(seconds=${3:10}))"],
+        "body": ["try:","    result = ${1:collection}.touch(\"${2:document-key}\", timedelta(seconds=${3:10}))","except DocumentNotFoundException:","    print(\"Document not found, cannot use touch.\")"],
         "description": "Use Document Expiration"
     }
 }
