@@ -1,12 +1,12 @@
 {
     "Create Analytics Query": {
         "prefix": ["@cbanq"],
-        "body": ["var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:query}\");"],
+        "body": ["try","{","    var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:SQL++ Query}\");","","    if (result.Rows.Any()) // check there are results","    {","        foreach (var row in result.Rows)","        {","            // handle results","        }","    }","}","catch (AnalyticsException exception)","{","    foreach (var error in exception.Errors)","    {","        Console.WriteLine($\"Error: {error.Message}\");","    }","}"],
         "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster."
     },
     "Analytics Query With Parameters": {
         "prefix": ["@cbanparamq"],
-        "body": ["var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:query}\")","    .AddPositionalParameter(\"${3:parameters}\");","    .AddNamedParameter(${3:parameters});"],
+        "body": ["try","{","    var result = await ${1:cluster}.AnalyticsQueryAsync<dynamic>(\"${2:SQL++ Query}\")","        //Keep one of the following 2 lines, depending on whether you want named or positional parameters.","        .AddPositionalParameter(\"${3:parameters}\"); //Positional parameters","        .AddNamedParameter(${3:parameters}); //Named parameters","","    if (result.Rows.Any()) // check there are results","    {","        foreach (var row in result.Rows)","        {","            // handle results","        }","    }","}","catch (AnalyticsException exception)","{","    foreach (var error in exception.Errors)","    {","        Console.WriteLine($\"Error: {error.Message}\");","    }","}"],
         "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster, this uses parameters."
     },
     "Analytics Query Example": {
