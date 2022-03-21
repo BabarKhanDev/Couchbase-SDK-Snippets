@@ -15,7 +15,7 @@
         "description": "Example code that shows connecting to a cluster and running an analytics query on it."
     },
     "Analytics Query Import": {
-        "prefix": ["@cbananimp"],
+        "prefix": ["@cbanimp"],
         "body": [],
         "description": "Import all necessary Analytics namespaces."
     }
