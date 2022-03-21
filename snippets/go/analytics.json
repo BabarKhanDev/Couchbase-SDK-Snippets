@@ -1,12 +1,22 @@
 {
     "Create Analytics Query": {
-        "prefix": ["@cbanalytics"],
+        "prefix": ["@cbanq"],
         "body": ["results, err := ${1:cluster}.AnalyticsQuery(\"${2:query}\", nil)","if err != nil {","    panic(err)","}"],
-        "description": "Use SQL++ to Query the Couchbase Cluster."
+        "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster."
     },
     "Analytics Query With Parameters": {
-        "prefix": ["@cbanalyticspara"],
+        "prefix": ["@cbanparamq"],
         "body": ["results, err := ${1:cluster}.AnalyticsQuery(","    \"${2:query}\",","    &gocb.AnalyticsOptions{","        PositionalParameters: []interface{}{${3:parameters}}, // keep this line for positional parameters","        NamedParameters: map[string]interface{}{${3:parameters}}, // keep this line for named parameters","    },",")"],
-        "description": "Use SQL++ to Query the Couchbase Cluster, this has all options available."
+        "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster, this uses parameters."
+    },
+    "Analytics Query Example": {
+        "prefix": ["@cbanex"],
+        "body": [],
+        "description": "Example code that shows connecting to a cluster and running an analytics query on it."
+    },
+    "Analytics Query Import": {
+        "prefix": ["@cbananimp"],
+        "body": [],
+        "description": "Import all necessary Analytics namespaces."
     }
 }

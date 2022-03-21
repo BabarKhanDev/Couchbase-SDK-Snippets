@@ -27,6 +27,6 @@
     "SQL++ Query Example": {
         "prefix": ["@cbqex"],
         "body": ["const couchbase = require('couchbase')","","async function main() {","    const cluster = await couchbase.connect('${1:connectionString}', {","        username: '${2:username}',","        password: '${3:password}',","    })","","    const query = `","    ${4:SQL++ Query}","    `;","","    try {","        let result = await cluster.query(query)","        console.log(\"Result:\", result)","        return result","    } catch (error) {","        console.error('Query failed: ', error)","    }","}"],
-        "description": "Example code that shows..."
+        "description": "Example code that shows connecting to a cluster and running a query on it."
     }
 }
