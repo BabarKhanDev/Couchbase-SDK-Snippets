@@ -1,52 +1,42 @@
 {
-    "Create Collection": {
+    "Create a Collection Manager": {
+        "prefix": ["@cbcolman"],
+        "body": [],
+        "description": "Connect to a cluster, and create a collection manager."
+    },
+    "Create a Collection": {
         "prefix": ["@cbcrcol"],
         "body": ["const collectionMgr = ${1:bucket}.collections()","","try {","  var collectionSpec = new couchbase.CollectionSpec({","    name: '${2:collection-name}',","    scopeName: '${3:scope-name}',","  })","","  await collectionMgr.createCollection(collectionSpec)","} catch (e) {","  if (e instanceof couchbase.CollectionExistsError) {","    console.log('The collection already exists')","  } else if (e instanceof couchbase.ScopeNotFoundError) {","    console.log('The scope does not exist')","  } else {","    throw e","  }","}"],
-        "description": "Create a new collection, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
-    },
-    "Create Scope": {
-        "prefix": ["@cbcrscope"],
-        "body": ["try {","  await collectionMgr.createScope('${1:scope-name}')","} catch (e) {","  if (e instanceof couchbase.ScopeExistsError) {","    console.log('The scope already exists')","  } else {","    throw e","  }","}"],
-        "description": "Create a new scope, this requires a collection manager to aleady be present. You can make one with the snippet: @cbmkcollectionmanager"
-    },
-    "Create Bucket": {
-        "prefix": ["@cbcrbuck"],
-        "body": ["const bucketMgr = ${1:cluster}.buckets()","","await bucketMgr.createBucket({","  name: '${2:bucket-name}',","  flushEnabled: ${3:false},","  replicaIndex: ${4:false},","  ramQuotaMB: ${5:200},","  numReplicas: ${6:1},","  bucketType: ${7:couchbase.BucketType.Couchbase},","})"],
-        "description": "Create a new bucket, this requires a bucket manager to be present, you can create one with @cbmkbucketmanager"
-    },
-    "Create Index": {
-        "prefix": ["@cbcrind"],
-        "body": ["not sure the best way to make this yet"],
-        "description": "Create a new query index manager object and an index."
-    },
-    "Create Collection Manager": {
-        "prefix": ["@cbcolman"],
-        "body": ["const collectionMgr = ${1:bucket}.collections()"],
-        "description": "Create a collection manager on your bucket object."
-    },
-    "Create Bucket Manager": {
-        "prefix": ["@cbbuckman"],
-        "body": ["const bucketMgr = ${1:cluster}.buckets()"],
-        "description": "Create a bucket manager on your cluster object."
-    },
-    "Connect to a Cluster": {
-        "prefix": ["@cbclus"],
-        "body": ["const couchbase = require('couchbase')","","async function main() {","  const ${1:cluster} = await couchbase.connect('${2:connectionString}', {","    username: '${3:username}',","    password: '${4:password}',","  })"],
-        "description": "Connect to a cluster and create a new Cluster object"
-    },
-    "Connect to a Bucket": {
-        "prefix": ["@cbbuck"],
-        "body": ["const ${1:bucket} = ${2:cluster}.bucket('${3:bucketName}')"],
-        "description": "Get a bucket reference, and create a new Bucket object, using a cluster object that you can create using @cbcnncluster"
-    },
-    "Connect to a Scope": {
-        "prefix": ["@cbscope"],
-        "body": ["const ${1:scope} = ${2:bucket}.scope('${3:scopeName}')"],
-        "description": "Get a scope reference, and create a new Scope object, using a bucket object that you can create using @cbcnnbucket"
-    },
-    "Connect to a Collection": {
+        "description": "Create a new collection, this will create a new collection manager."
+    },    
+    "Create a Collection Reference": {
         "prefix": ["@cbcol"],
         "body": ["const ${1:collection} = ${2:scope}.collection('${3:collectionName}')"],
-        "description": "Get a collection reference, and create a new Collection object, using a scope object that you can create using @cbcnnscope"
+        "description": "Create a reference to an existing collection."
+    },
+    "Create a Scope": {
+        "prefix": ["@cbcrscope"],
+        "body": ["const collectionMgr = ${1:bucket}.collections()","","try {","  await collectionMgr.createScope('${1:scope-name}')","} catch (e) {","  if (e instanceof couchbase.ScopeExistsError) {","    console.log('The scope already exists')","  } else {","    throw e","  }","}"],
+        "description": "Create a new scope, this will create a new collection manager."
+    },
+    "Create a Bucket": {
+        "prefix": ["@cbcrbuck"],
+        "body": ["const bucketMgr = ${1:cluster}.buckets()","","await bucketMgr.createBucket({","  name: '${2:bucket-name}',","  flushEnabled: ${3:false},","  replicaIndex: ${4:false},","  ramQuotaMB: ${5:200},","  numReplicas: ${6:1},","  bucketType: ${7:couchbase.BucketType.Couchbase},","})"],
+        "description": "Create a new bucket on an existing cluster reference."
+    },
+    "Create a Bucket Reference": {
+        "prefix": ["@cbbuck"],
+        "body": ["const ${1:bucket} = ${2:cluster}.bucket('${3:bucketName}')"],
+        "description": "Create a reference to an existing bucket."
+    },
+    "Create an Index": {
+        "prefix": ["@cbcrind"],
+        "body": [],
+        "description": "Create a new index, this will create a new index manager."
+    },
+    "Create a User": {
+        "prefix": ["@cbupsuser"],
+        "body": [],
+        "description": "Add a user to your Couchbase Cluster."
     }
 }
