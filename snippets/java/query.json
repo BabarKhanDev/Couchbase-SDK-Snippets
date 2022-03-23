@@ -16,7 +16,7 @@
     },
     "SQL++ Query with FTS": {
         "prefix": ["@cbqfts"],
-        "body": [],
+        "body": ["try {","    QueryResult result = ${1:cluster}.query(","        \"${2:SELECT ... FROM ... USE INDEX (USING FTS) WHERE ...}\",","        queryOptions().flexIndex(true));","","    for (JsonObject row : result.rowsAsObject()) {","        System.out.println(\"Found row: \" + row);","    }","","    System.out.println(\"Reported execution time: \" + result.metaData().metrics().get().executionTime());","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
         "description": "Use SQL++ to query the Couchbase Cluster with full text search."
     },
     "SQL++ Query Import": {
