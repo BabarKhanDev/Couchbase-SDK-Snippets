@@ -1,7 +1,7 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbq"],
-        "body": ["try:","    result = ${1:cluster}.query(","        \"${2:SQL++ Query}\", QueryOptions(metrics=True))","","    for row in result.rows():","        print(\"Found row: {}\".format(row))","","    print(\"Report execution time: {}\".format(","        result.metadata().metrics().execution_time()))","","except CouchbaseException as ex:","    import traceback","    traceback.print_exc()"],
+        "body": ["try:","    result = ${1:cluster}.query(","        \"${2:SQL++ Query}\",","        QueryOptions(","            scan_consistency = QueryScanConsistency.REQUEST_PLUS,","            read_only = False,","            metrics = True","            ))","","    for row in result.rows():","        print(\"Found row: {}\".format(row))","","    print(\"Report execution time: {}\".format(","        result.metadata().metrics().execution_time()))","","except CouchbaseException as ex:","    import traceback","    traceback.print_exc()"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
