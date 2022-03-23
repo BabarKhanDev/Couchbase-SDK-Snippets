@@ -16,7 +16,7 @@
     },
     "SQL++ Query with FTS": {
         "prefix": ["@cbqfts"],
-        "body": [],
+        "body": ["async function queryFTS() {","    const query = `","    ${1:SELECT ... FROM ... USE INDEX (USING FTS) WHERE ...}","    `;","    const options = { flexIndex: true }","","    try {","        let result = await ${5:cluster}.query(query, options)","        console.log(\"Result:\", result)","        return result","    } catch (error) {","        console.error('Query failed: ', error)","    }","}"],
         "description": "Use SQL++ to query the Couchbase Cluster with full text search."
     },
     "SQL++ Query Import": {
