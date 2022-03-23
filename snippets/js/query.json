@@ -1,7 +1,7 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbq"],
-        "body": ["async function query() {","    const query = `","    ${1:SQL++ Query}","    `;","","    try {","        let result = await ${2:cluster}.query(query)","        console.log(\"Result:\", result)","        return result","    } catch (error) {","        console.error('Query failed: ', error)","    }","}"],
+        "body": ["async function query() {","    const query = `","    ${1:query}","    `;","    const options = { ","        scanConsistency: QueryScanConsistency.RequestPlus","        readOnly: false","        metrics: true","    }","","    try {","      let result = await ${20:cluster}.query(query, options)","      console.log(\"Result:\", result)","      return result","    } catch (error) {","      console.error('Query failed: ', error)","    }","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
