@@ -16,7 +16,7 @@
     },
     "SQL++ Query with FTS": {
         "prefix": ["@cbqfts"],
-        "body": [],
+        "body": ["var result = await ${1:cluster}.QueryAsync<dynamic>(","    \"${2:SELECT ... FROM ... USE INDEX (USING FTS) WHERE ...}\",","    options => options.FlexIndex(true)",");","","// check query was successful","if (result.MetaData.Status != QueryStatus.Success)","{","    // error","}","","// iterate over rows","await foreach (var row in result)","{","    // each row is an instance of the Query<T> call (e.g. dynamic or custom type)","}"],
         "description": "Use SQL++ to query the Couchbase Cluster with full text search."
     },
     "SQL++ Query Import": {
