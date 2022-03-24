@@ -1,7 +1,7 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbq"],
-        "body": ["var result = await ${1:cluster}.QueryAsync<dynamic>(","   \"${2:SQL++ Query}\",",");","","// check query was successful","if (result.MetaData.Status != QueryStatus.Success)","{","    // error","}","","// iterate over rows","await foreach (var row in result)","{","    // each row is an instance of the Query<T> call (e.g. dynamic or custom type)","}"],
+        "body": ["var result = await ${1:cluster}.QueryAsync<dynamic>(","    \"${2:SQL++ Query}\",","    options => options.readonly(false)","        .metrics(true)","        .scanConsistency(QueryScanConsistency.RequestPlus)",");","","// check query was successful","if (result.MetaData.Status != QueryStatus.Success)","{","    // error","}","","// iterate over rows","await foreach (var row in result)","{","    // each row is an instance of the Query<T> call (e.g. dynamic or custom type)","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
