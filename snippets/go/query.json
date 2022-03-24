@@ -1,7 +1,7 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbq"],
-        "body": ["query := \"${1:SQL++ Query}\"","results, err := ${2:cluster}.Query(query, nil)","","if err != nil {","   panic(err)","}","","for results.Next() {"," // handle results","}","","// always check for errors after iterating","err = results.Err()","if err != nil {","    panic(err)","}"],
+        "body": ["query := \"${1:SQL++ Query}\"","results, err := ${2:cluster}.Query(query, &gocb.QueryOptions{","  ReadOnly:        false,","  Metrics:         true,","   ScanConsistency: gocb.QueryScanConsistencyRequestPlus,","})","if err != nil {","    panic(err)","}","","for results.Next() {"," // handle results","}","","// always check for errors after iterating","err = results.Err()","if err != nil {","    panic(err)","}"],
         "description": "Use SQL++ to Query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
