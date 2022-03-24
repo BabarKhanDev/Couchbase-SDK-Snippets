@@ -1,7 +1,7 @@
 {
     "Create Analytics Query": {
         "prefix": ["@cbanq"],
-        "body": ["try {","    var result = await ${1:cluster}.analyticsQuery('${2:SQL++ Query}')","","    result.rows.forEach((row) => {","        // handle results","    })","} catch (e) {","    throw e","}"],
+        "body": ["try {","    var result = await ${1:cluster}.analyticsQuery('${2:SQL++ Query}')","","    result.rows.forEach((row) => {","        // handle results","    })","","    console.log('Elapsed time: %d', result.meta.metrics.elapsedTime)","    console.log('Execution time: %d', result.meta.metrics.executionTime)","    console.log('Result count: %d', result.meta.metrics.resultCount)","    console.log('Error count: %d', result.meta.metrics.errorCount)","","} catch (e) {","    throw e","}"],
         "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster."
     },
     "Analytics Query With Parameters": {
