@@ -1,7 +1,7 @@
 {
     "Create Analytics Query": {
         "prefix": ["@cbanq"],
-        "body": ["results, err := ${1:cluster}.AnalyticsQuery(\"${2:SQL++ Query}\", nil)","if err != nil {","   panic(err)","}","","var output interface{}","for results.Next() {","    err := results.Row(&output)","  if err != nil {","      panic(err)","   }","    fmt.Println(output)","}","","// always check for errors after iterating.","err = results.Err()","if err != nil {"," panic(err)","}"],
+        "body": ["results, err := ${1:cluster}.AnalyticsQuery(\"${2:SQL++ Query}\", nil)","if err != nil {","   panic(err)","}","","var output interface{}","for results.Next() {","    err := results.Row(&output)","  if err != nil {","      panic(err)","   }","    fmt.Println(output)","}","","// always check for errors after iterating.","err = results.Err()","if err != nil {"," panic(err)","}","","fmt.Printf(\"Elapsed time: %d\\n\", metadata.Metrics.ElapsedTime)","fmt.Printf(\"Execution time: %d\\n\", metadata.Metrics.ExecutionTime)","fmt.Printf(\"Result count: %d\\n\", metadata.Metrics.ResultCount)","fmt.Printf(\"Error count: %d\\n\", metadata.Metrics.ErrorCount)"],
         "description": "Use SQL++ to Query the Analytics Service on the Couchbase Cluster."
     },
     "Analytics Query With Parameters": {
