@@ -1,7 +1,7 @@
 {
     "Create SQL++ Query": {
         "prefix": ["@cbq"],
-        "body": ["try {","    final QueryResult result = ${1:cluster}.query(\"${2:SQL++ Query}\",","        queryOptions().metrics(true));","","    for (JsonObject row : result.rowsAsObject()) {","        System.out.println(\"Found row: \" + row);","    }","","    System.out.println(\"Reported execution time: \" + result.metaData().metrics().get().executionTime());","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
+        "body": ["QueryOptions qo = QueryOptions.queryOptions();","qo.readonly(false);","qo.metrics(true);","qo.scanConsistency(QueryScanConsistency.REQUEST_PLUS);","","try {","    final QueryResult result = ${18:cluster}.query(\"${19:SQL++ Query}\", qo );","","    for (JsonObject row : result.rowsAsObject()) {","        System.out.println(\"Found row: \" + row);","    }","","    System.out.println(\"Reported execution time: \" + result.metaData().metrics().get().executionTime());","} catch (CouchbaseException ex) {","    ex.printStackTrace();","}"],
         "description": "Use SQL++ to query the Couchbase Cluster."
     },
     "SQL++ Query With all Options": {
