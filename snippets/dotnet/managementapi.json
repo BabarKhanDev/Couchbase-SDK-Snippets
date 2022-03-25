@@ -1,7 +1,7 @@
 {
     "Create a Collection Manager": {
         "prefix": ["@cbcolman"],
-        "body": [],
+        "body": ["using System.Threading.Tasks;","using Couchbase;","","var cluster = await Cluster.ConnectAsync(\"${1:connection-string}\", \"${2:username}\", \"${3:password}\");","","// get a bucket reference","var bucket = await cluster.BucketAsync(\"${4:bucket-name}\");","","ICouchbaseCollectionManager collectionMgr = bucket.Collections;","","var spec = new CollectionSpec(\"${5:scope-name}\", \"${6:collection-name}\");","","try {","    await collectionMgr.CreateCollectionAsync(spec);","}","catch (CollectionExistsException) {","    Console.WriteLine(\"Collection already exists\");","}","catch (ScopeNotFoundException) {","    Console.WriteLine(\"The specified parent scope doesn't exist\");","}"],
         "description": "Connect to a cluster, and create a collection manager."
     },
     "Create a Collection": {
@@ -11,17 +11,17 @@
     },    
     "Create a Collection Reference": {
         "prefix": ["@cbcol"],
-        "body": ["var ${1:collection} = await ${2:scope}.CollectionAsync(\"${3:collectionName}\");"],
+        "body": ["var scope = await ${1:bucket}.ScopeAsync(\"${2:scopeName}\");","var ${3:collection} = await scope.CollectionAsync(\"${4:collectionName}\");"],
         "description": "Create a reference to an existing collection."
     },
     "Create a Scope": {
         "prefix": ["@cbcrscope"],
-        "body": ["try {","    await collectionMgr.CreateScopeAsync(\"${1:scope-name}\");","}","catch (ScopeExistsException) {","    Console.WriteLine(\"The scope already exists\");","}"],
+        "body": ["try {","    ICouchbaseCollectionManager collectionMgr = ${1:bucket}.Collections;","    await collectionMgr.CreateScopeAsync(\"${2:scope-name}\");","}","catch (ScopeExistsException) {","    Console.WriteLine(\"The scope already exists\");","}"],
         "description": "Create a new scope, this will create a new collection manager."
     },
     "Create a Bucket": {
         "prefix": ["@cbcrbuck"],
-        "body": ["IBucketManager bucketMgr = ${1:cluster}.Buckets;","","var bucketSettings = new BucketSettings();","bucketSettings.Name = \"${2:bucket-name}\";","bucketSettings.BucketType = ${3:BucketType.Couchbase};","bucketSettings.RamQuotaMB = ${4:100};","await bucketMgr.CreateBucketAsync(bucketSettings);"],
+        "body": ["try {","    IBucketManager bucketMgr = ${1:cluster}.Buckets;","","    var bucketSettings = new BucketSettings();","    bucketSettings.Name = \"${2:bucket-name}\";","    bucketSettings.BucketType = ${3:BucketType.Couchbase};","    bucketSettings.RamQuotaMB = ${4:100};","    await bucketMgr.CreateBucketAsync(bucketSettings);","}","catch (BucketExistsException) {","    Console.WriteLine(\"The bucket already exists\");","}"],
         "description": "Create a new bucket on an existing cluster reference."
     },
     "Create a Bucket Reference": {
@@ -31,12 +31,12 @@
     },
     "Create an Index": {
         "prefix": ["@cbcrind"],
-        "body": [],
+        "body": ["try {","    IQueryIndexManager indexMgr = ${1:cluster}.QueryIndexes();","    indexMgr.CreateIndexAsync(\"${2:bucketName}\", \"${3:indexName}\", ${4:fields}, ${5:options = null})","}","catch (IndexExistsException) {","    Console.WriteLine(\"Index already exists\");","}","catch (IndexFailureException) {","    Console.WriteLine(\"Index creation failed\");","}"],
         "description": "Create a new index, this will create a new index manager."
     },
     "Create a User": {
         "prefix": ["@cbupsuser"],
-        "body": [],
+        "body": ["User user = new User(\"${1:username}\") {","    Password = \"${2:password}\",","    DisplayName = \"${3:display name}\",","    Roles = new List<Role>() {","        // Roles required for the reading of data from the bucket","        new Role(\"data_reader\", \"*\"),","        new Role(\"query_select\", \"*\"),","        // Roles required for the writing of data into the bucket.","        new Role(\"data_writer\", \"${4:Bucket Name}\"),","        new Role(\"query_insert\", \"${4:Bucket Name}\"),","        new Role(\"query_delete\", \"${4:Bucket Name}\"),","        // Role required for the creation of indexes on the bucket.","        new Role(\"query_manage_index\", \"${4:Bucket Name}\")","    }","};","","await ${5:cluster}.Users.UpsertUserAsync(user);"],
         "description": "Add a user to your Couchbase Cluster."
     }
 }

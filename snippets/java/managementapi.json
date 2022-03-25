@@ -16,7 +16,7 @@
     },
     "Create a Scope": {
         "prefix": ["@cbcrscope"],
-        "body": ["try {","    collectionMgr.createScope(\"${1:scopeName}\");", "}", "catch (ScopeExistsException e) {","    System.out.println(\"Scope already exists\");", "}"],
+        "body": ["try {","    CollectionManager collectionMgr = ${1:bucket}.collections();","    collectionMgr.createScope(\"${2:scopeName}\");", "}", "catch (ScopeExistsException e) {","    System.out.println(\"Scope already exists\");", "}"],
         "description": "Create a new scope, this will create a new collection manager."
     },
     "Create a Bucket": {
