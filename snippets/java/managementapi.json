@@ -11,7 +11,7 @@
     },    
     "Create a Collection Reference": {
         "prefix": ["@cbcol"],
-        "body": ["Scope scope = bucket.scope(\"${1:scopeName}\");","Collection ${2:collection} = scope.collection(\"${3:collectionName}\");"],
+        "body": ["Scope scope = ${1:bucket}.scope(\"${2:scopeName}\");","Collection ${3:collection} = scope.collection(\"${4:collectionName}\");"],
         "description": "Create a reference to an existing collection."
     },
     "Create a Scope": {
