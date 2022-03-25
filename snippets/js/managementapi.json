@@ -1,7 +1,7 @@
 {
     "Create a Collection Manager": {
         "prefix": ["@cbcolman"],
-        "body": [],
+        "body": ["const couchbase = require('couchbase')","","const cluster = await couchbase.connect('${1:connection-string}', {","  username: '${2:Administrator}',","  password: '${3:password}',","})","","// get a reference to our bucket","const bucket = cluster.bucket('${4:bucket-name}')","","const collectionMgr = bucket.collections()","","try {","  var collectionSpec = new couchbase.CollectionSpec({","    name: '${5:collection-name}',","    scopeName: '${6:scope-name}',","  })","","  await collectionMgr.createCollection(collectionSpec)","} catch (e) {","  if (e instanceof couchbase.CollectionExistsError) {","    console.log('The collection already exists')","  } else if (e instanceof couchbase.ScopeNotFoundError) {","    console.log('The scope does not exist')","  } else {","    throw e","  }","}"],
         "description": "Connect to a cluster, and create a collection manager."
     },
     "Create a Collection": {
@@ -21,7 +21,7 @@
     },
     "Create a Bucket": {
         "prefix": ["@cbcrbuck"],
-        "body": ["const bucketMgr = ${1:cluster}.buckets()","","await bucketMgr.createBucket({","  name: '${2:bucket-name}',","  flushEnabled: ${3:false},","  replicaIndex: ${4:false},","  ramQuotaMB: ${5:200},","  numReplicas: ${6:1},","  bucketType: ${7:couchbase.BucketType.Couchbase},","})"],
+        "body": ["try {","  const bucketMgr = ${1:cluster}.buckets()","","  await bucketMgr.createBucket({","    name: '${2:bucket-name}',","    flushEnabled: ${3:false},","    replicaIndex: ${4:false},","    ramQuotaMB: ${5:200},","    numReplicas: ${6:1},","    bucketType: couchbase.BucketType.${7:Couchbase},","  })","","} catch (e) {","  if (e instanceof couchbase.BucketExistsError) {","    console.log('The bucket already exists')","  } else {","    throw e","  }","}"],
         "description": "Create a new bucket on an existing cluster reference."
     },
     "Create a Bucket Reference": {
@@ -31,12 +31,12 @@
     },
     "Create an Index": {
         "prefix": ["@cbcrind"],
-        "body": [],
+        "body": ["try {","  indexMgr = ${1:cluster}.queryIndexes()","  indexMgr.createIndex('${2:bucketName}', '${3:indexName}', ${4:fields})","} catch (e) {","  if (e instanceof couchbase.IndexExistsError) {","    console.log('The index already exists')","  } else if (e instanceof couchbase.IndexFailureError){","    console.log('Index creation failed')","  } else {","    throw e","  }","}"],
         "description": "Create a new index, this will create a new index manager."
     },
     "Create a User": {
         "prefix": ["@cbupsuser"],
-        "body": [],
+        "body": ["const userMgr = ${1:cluster}.users();","","await userMgr.upsertUser({","    username: \"${2:username}\",","    password: \"${3:password}\",","    displayName: \"${4:Display Name}\",","    roles: [","        // Roles required for the reading of data from the bucket","        { name: \"data_reader\", bucket: \"*\" },","        { name: \"query_select\", bucket: \"*\" },","","        // Roles required for the writing of data into the bucket. ","        { name: \"data_writer\", bucket: \"${5:bucket name}\" },","        { name: \"query_insert\", bucket: \"${5:bucket name}\" },","        { name: \"query_delete\", bucket: \"${5:bucket name}\" },","","        // Role required for the creation of indexes on the bucket.","        { name: \"query_manage_index\", bucket: \"${5:bucket name}\" }","    ]","})"],
         "description": "Add a user to your Couchbase Cluster."
     }
 }
