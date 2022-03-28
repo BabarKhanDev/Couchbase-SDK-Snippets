@@ -8,5 +8,15 @@
         "prefix": ["@cbftsopts"],
         "body": ["try:","    result = ${1:cluster}.search_query(","        \"${2:search-index}\", search.QueryStringQuery(\"${3:query-string}\"),","        SearchOptions(limit = ${4:int}, skip = ${5:int}, explain = ${6:bool}, scan_consistency = ${7:SearchScanConsistency}, consistent_with = ${8:MutationState}, highlight_style = ${9:HighlightStyle}, highlight_fields = ${10:List[str]}, sort = ${11:List[str]}, facets = ${12:Map[str, SearchFacet]}, fields = ${13:List[str]}, raw = ${14:JSON}, collections = ${15:List[str]}))","","    for row in result.rows():","        print(\"Found row: {}\".format(row))","","    print(\"Reported total rows: {}\".format(","        result.metadata().metrics.total_rows))","","except CouchbaseException as ex:","    import traceback","    traceback.print_exc()"],
         "description": "Create a FTS query that has all options shown to you."
+    },
+    "Full Text Search Import": {
+        "prefix": ["@cbftsimp"],
+        "body": [],
+        "description": "Import all necessary FTS namespaces"
+    },
+    "Full Text Search Example": {
+        "prefix": ["@cbftsex"],
+        "body": [],
+        "description": "Example code that shows connecting to a cluster and running an FTS query on it."
     }
 }

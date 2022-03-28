@@ -8,5 +8,15 @@
         "prefix": ["@cbftsopts"],
         "body": ["matchResult, err := ${1:cluster}.SearchQuery(","    \"${2:search-index}\",","    search.NewMatchQuery(\"${3:query-string}\"),","    &gocb.SearchOptions{","        Limit:  ${4:limit},","        Fields: ${5:[]string{string}},","        Facets: ${6:map[string]search.Facet{}},","        ConsistentWith: ${7:consistency},","","    },",")","if err != nil {","    panic(err)","}"],
         "description": "Create a FTS query that has all options shown to you."
+    },
+    "Full Text Search Import": {
+        "prefix": ["@cbftsimp"],
+        "body": [],
+        "description": "Import all necessary FTS namespaces"
+    },
+    "Full Text Search Example": {
+        "prefix": ["@cbftsex"],
+        "body": [],
+        "description": "Example code that shows connecting to a cluster and running an FTS query on it."
     }
 }

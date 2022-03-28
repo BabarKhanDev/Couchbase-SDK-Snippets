@@ -8,5 +8,15 @@
         "prefix": ["@cbftsopts"],
         "body": ["async function ftsMatchWord(term) {","    return await ${1:cluster}.searchQuery(","        '${2:search-index}',","        couchbase.SearchQuery.match(term),","        {","            limit: ${3:5},","            consistentWith: ${4:mutationState}, ","        }","    )","}"],
         "description": "Create a FTS query that has all options shown to you."
+    },
+    "Full Text Search Import": {
+        "prefix": ["@cbftsimp"],
+        "body": [],
+        "description": "Import all necessary FTS namespaces"
+    },
+    "Full Text Search Example": {
+        "prefix": ["@cbftsex"],
+        "body": [],
+        "description": "Example code that shows connecting to a cluster and running an FTS query on it."
     }
 }
