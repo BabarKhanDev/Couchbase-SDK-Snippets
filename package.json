@@ -1,85 +1,194 @@
 {
   "name": "couchbase-sdk-snippets",
-	"displayName": "Couchbase-SDK-Snippets",
-	"description": "",
-	"version": "0.0.1",
-	"author": {
-		"name":"Babar Khan"
-	},
-	"repository": {
-		"type":"git",
-		"url": "https://github.com/BabarKhanDev/Couchbase-SDK-Snippets.git"
-	},
-	"engines": {
-		"vscode": "^1.64.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"snippets": [
-			{"language": "java","path": "./snippets/java/managementapi.json"},
-			{"language": "java","path": "./snippets/java/kvops.json"},
-			{"language": "java","path": "./snippets/java/subdocops.json"},
-			{"language": "java","path": "./snippets/java/query.json"},
-			{"language": "java","path": "./snippets/java/analytics.json"},
-			{"language": "java","path": "./snippets/java/fts.json"},
-			{"language": "java","path": "./snippets/java/bootstrapping.json"},
-			{"language": "python","path": "./snippets/python/managementapi.json"},
-			{"language": "python","path": "./snippets/python/kvops.json"},
-			{"language": "python","path": "./snippets/python/subdocops.json"},
-			{"language": "python","path": "./snippets/python/query.json"},
-			{"language": "python","path": "./snippets/python/analytics.json"},
-			{"language": "python","path": "./snippets/python/fts.json"},
-			{"language": "python","path": "./snippets/python/bootstrapping.json"},
-			{"language": "javascript","path": "./snippets/js/managementapi.json"},
-			{"language": "javascript","path": "./snippets/js/kvops.json"},
-			{"language": "javascript","path": "./snippets/js/subdocops.json"},
-			{"language": "javascript","path": "./snippets/js/query.json"},
-			{"language": "javascript","path": "./snippets/js/analytics.json"},
-			{"language": "javascript","path": "./snippets/js/fts.json"},
-			{"language": "javascript","path": "./snippets/js/bootstrapping.json"},
-			{"language": "typescript","path": "./snippets/ts/kvops.json"},
-			{"language": "typescript","path": "./snippets/ts/bootstrapping.json"},
-			{"language": "go","path": "./snippets/go/managementapi.json"},
-			{"language": "go","path": "./snippets/go/kvops.json"},
-			{"language": "go","path": "./snippets/go/subdocops.json"},
-			{"language": "go","path": "./snippets/go/query.json"},
-			{"language": "go","path": "./snippets/go/analytics.json"},
-			{"language": "go","path": "./snippets/go/fts.json"},
-			{"language": "go","path": "./snippets/go/bootstrapping.json"},
-			{"language": "csharp","path": "./snippets/dotnet/managementapi.json"},
-			{"language": "csharp","path": "./snippets/dotnet/kvops.json"},
-			{"language": "csharp","path": "./snippets/dotnet/subdocops.json"},
-			{"language": "csharp","path": "./snippets/dotnet/query.json"},
-			{"language": "csharp","path": "./snippets/dotnet/analytics.json"},
-			{"language": "csharp","path": "./snippets/dotnet/fts.json"},
-			{"language": "csharp","path": "./snippets/dotnet/bootstrapping.json"}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.64.0",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.0",
-		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.12.1",
-		"@typescript-eslint/parser": "^5.12.1",
-		"eslint": "^8.9.0",
-		"glob": "^7.2.0",
-		"mocha": "^9.2.1",
-		"typescript": "^4.5.5",
-		"@vscode/test-electron": "^2.1.2"
-	}
+  "displayName": "Couchbase-SDK-Snippets",
+  "description": "",
+  "version": "0.1.0",
+  "author": {
+    "name": "Babar Khan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BabarKhanDev/Couchbase-SDK-Snippets.git"
+  },
+  "engines": {
+    "vscode": "^1.64.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "java",
+        "path": "./snippets/java/managementapi.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/kvops.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/subdocops.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/query.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/analytics.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/fts.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java/bootstrapping.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/managementapi.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/kvops.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/subdocops.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/query.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/analytics.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/fts.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/bootstrapping.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/managementapi.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/kvops.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/subdocops.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/query.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/analytics.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/fts.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/bootstrapping.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/ts/kvops.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/ts/bootstrapping.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/managementapi.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/kvops.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/subdocops.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/query.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/analytics.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/fts.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/go/bootstrapping.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/managementapi.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/kvops.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/subdocops.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/query.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/analytics.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/fts.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/bootstrapping.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.64.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.1",
+    "typescript": "^4.5.5",
+    "@vscode/test-electron": "^2.1.2"
+  }
 }
