@@ -11,12 +11,12 @@
     },
     "Full Text Search Import": {
         "prefix": ["@cbftsimp"],
-        "body": [],
+        "body": ["from couchbase.cluster import Cluster, ClusterOptions","from couchbase.auth import PasswordAuthenticator","from couchbase.exceptions import CouchbaseException","import couchbase.search as search"],
         "description": "Import all necessary FTS namespaces"
     },
     "Full Text Search Example": {
         "prefix": ["@cbftsex"],
-        "body": [],
+        "body": ["from couchbase.cluster import Cluster, ClusterOptions","from couchbase.auth import PasswordAuthenticator","from couchbase.exceptions import CouchbaseException","import couchbase.search as search","","# get a reference to our cluster","cluster = Cluster('${1:connection-string}', ClusterOptions(","    PasswordAuthenticator('${2:username}', '${3:password}')))","","try:","    result = cluster.search_query(","        \"${4:search-index}\", search.QueryStringQuery(\"${5:search-query}\"))","","    for row in result.rows():","        print(\"Found row: {}\".format(row))","","    print(\"Reported total rows: {}\".format(","        result.metadata().metrics.total_rows))","","except CouchbaseException as ex:","    import traceback","    traceback.print_exc()"],
         "description": "Example code that shows connecting to a cluster and running an FTS query on it."
     }
 }
