@@ -11,12 +11,12 @@
     },
     "Full Text Search Import": {
         "prefix": ["@cbftsimp"],
-        "body": [],
+        "body": ["using Couchbase;","using Couchbase.Fts;","using System.Threading.Tasks;","using System;","using System.Collections.Generic;"],
         "description": "Import all necessary FTS namespaces"
     },
     "Full Text Search Example": {
         "prefix": ["@cbftsex"],
-        "body": [],
+        "body": ["using Couchbase;","using Couchbase.Fts;","using System.Threading.Tasks;","using System;","using System.Collections.Generic;","","var cluster = await Cluster.ConnectAsync(\"${1:connection-string}\", \"${2:username}\", \"${3:password}\");","","try {","    var result = cluster.SearchQuery(","        \"${4:search-index}\",","        new MatchQuery(\"${5:query-string}\"),","    );","","    foreach (var hit in result.Hits)","    {","        // handle results","    }","}","catch (CouchbaseException) {","    // handle exception","}"],
         "description": "Example code that shows connecting to a cluster and running an FTS query on it."
     }
 }
