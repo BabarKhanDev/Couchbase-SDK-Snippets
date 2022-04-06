@@ -1,27 +1,32 @@
 {
     "Transaction Example": {
         "prefix": ["@cbtran"],
-        "body": [],
+        "body": ["import com.couchbase.client.java.Bucket;","import com.couchbase.client.java.Cluster;","import com.couchbase.client.java.Collection;","import com.couchbase.client.java.Scope;","import com.couchbase.client.java.json.JsonArray;","import com.couchbase.client.java.json.JsonObject;","","import com.couchbase.transactions.TransactionGetResult;","import com.couchbase.transactions.TransactionResult;","import com.couchbase.transactions.Transactions;","import com.couchbase.transactions.error.TransactionCommitAmbiguous;","import com.couchbase.transactions.error.TransactionFailed;","import com.couchbase.transactions.log.LogDefer;","","public class ${1:className} {","","    Cluster cluster = Cluster.connect(${2:connectionString}, ${3:username}, ${4:password});","","    // get a bucket reference","    Bucket bucket = cluster.bucket(${5:bucketName});","","    // get a user defined collection reference","    Scope scope = bucket.scope(${6:scopeName});","    Collection collection = scope.collection(${7:collectionName});","","    try {","        TransactionResult result = transactions.run((ctx) -> {","            // Getting documents:","            // Use ctx.getOptional if the document may or may not exist","            Optional<TransactionGetResult> docOpt = ctx.getOptional(collection, \"${8:document-key}\");","","            // Use ctx.get if the document should exist, and the transaction","            // will fail if it does not","            TransactionGetResult docA = ctx.get(collection, \"${8:document-key}\");","            // Committing (the ctx.commit() call is optional)","            ctx.commit();","","        });","    } catch (TransactionCommitAmbiguous e) {","        System.err.println(\"Transaction possibly committed\");","","        for (LogDefer err : e.result().log().logs()) {","            System.err.println(err.toString());","        }","","    } catch (TransactionFailed e) {","        System.err.println(\"Transaction did not reach commit point\");","","        for (LogDefer err : e.result().log().logs()) {","            System.err.println(err.toString());","        }","","    }","}"],
         "description": "Example code that shows connecting to a cluster and running a transaction on it."
     },
     "Insert Transaction": {
         "prefix": ["@cbtranins"],
         "body": ["try {","    TransactionResult result = transactions.run((ctx) -> {","        // Inserting a doc:","        ctx.insert(${1:collection}, \"${2:document-key}\", ${3:document});","","        // Committing (the ctx.commit() call is optional)","        ctx.commit();","","    });","} catch (TransactionCommitAmbiguous e) {","    System.err.println(\"Transaction possibly committed\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","} catch (TransactionFailed e) {","    System.err.println(\"Transaction did not reach commit point\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","}"],
-        "description": "Perform an insertion transaction"
+        "description": "Perform a synchronous insertion transaction"
     },
     "Get Transaction": {
         "prefix": ["@cbtranget"],
         "body": ["try {","    TransactionResult result = transactions.run((ctx) -> {","        // Getting documents:","        // Use ctx.getOptional if the document may or may not exist","        Optional<TransactionGetResult> docOpt = ctx.getOptional(${1:collection}, \"${2:document-key}\");","","        // Use ctx.get if the document should exist, and the transaction","        // will fail if it does not","        TransactionGetResult docA = ctx.get(${1:collection}, \"${2:document-key}\");","        // Committing (the ctx.commit() call is optional)","        ctx.commit();","","    });","} catch (TransactionCommitAmbiguous e) {","    System.err.println(\"Transaction possibly committed\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","} catch (TransactionFailed e) {","    System.err.println(\"Transaction did not reach commit point\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","}"],
-        "description": "Perform a get transaction"
+        "description": "Perform a synchronous get transaction"
     },
     "Replace Transaction": {
         "prefix": ["@cbtranrep"],
         "body": ["try {","    TransactionResult result = transactions.run((ctx) -> {","        // Replacing a doc:","        TransactionGetResult docB = ctx.get(${1:collection}, \"${2:document-key}\");","        ctx.replace(docB, ${3:document});","","        // Committing (the ctx.commit() call is optional)","        ctx.commit();","","    });","} catch (TransactionCommitAmbiguous e) {","    System.err.println(\"Transaction possibly committed\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","} catch (TransactionFailed e) {","    System.err.println(\"Transaction did not reach commit point\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","}"],
-        "description": "Perform a replace transaction"
+        "description": "Perform a synchronous replace transaction"
     },
     "Remove Transaction": {
         "prefix": ["@cbtranrem"],
         "body": ["try {","    TransactionResult result = transactions.run((ctx) -> {","        // Removing a doc:","        TransactionGetResult docC = ctx.get(${1:collection}, \"${2:document-key}\");","        ctx.remove(docC);","","        // Committing (the ctx.commit() call is optional)","        ctx.commit();","","    });","} catch (TransactionCommitAmbiguous e) {","    System.err.println(\"Transaction possibly committed\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","} catch (TransactionFailed e) {","    System.err.println(\"Transaction did not reach commit point\");","","    for (LogDefer err : e.result().log().logs()) {","        System.err.println(err.toString());","    }","","}"],
-        "description": "Perform a remove transaction"
+        "description": "Perform a synchronous remove transaction"
+    },
+    "Transaction Import": {
+        "prefix": ["@cbtranex"],
+        "body": ["import com.couchbase.transactions.TransactionGetResult;","import com.couchbase.transactions.TransactionResult;","import com.couchbase.transactions.Transactions;","import com.couchbase.transactions.error.TransactionCommitAmbiguous;","import com.couchbase.transactions.error.TransactionFailed;","import com.couchbase.transactions.log.LogDefer;"],
+        "description": "Import all necessary transaction namespaces."
     }
 }
