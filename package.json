@@ -49,6 +49,10 @@
         "path": "./snippets/java/bootstrapping.json"
       },
       {
+        "language": "java",
+        "path": "./snippets/java/transactions.json"
+      },
+      {
         "language": "python",
         "path": "./snippets/python/managementapi.json"
       },
@@ -77,6 +81,10 @@
         "path": "./snippets/python/bootstrapping.json"
       },
       {
+        "language": "python",
+        "path": "./snippets/python/transactions.json"
+      },
+      {
         "language": "javascript",
         "path": "./snippets/js/managementapi.json"
       },
@@ -103,6 +111,10 @@
       {
         "language": "javascript",
         "path": "./snippets/js/bootstrapping.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/js/transactions.json"
       },
       {
         "language": "typescript",
@@ -141,6 +153,10 @@
         "path": "./snippets/go/bootstrapping.json"
       },
       {
+        "language": "go",
+        "path": "./snippets/go/transactions.json"
+      },
+      {
         "language": "csharp",
         "path": "./snippets/dotnet/managementapi.json"
       },
@@ -167,6 +183,10 @@
       {
         "language": "csharp",
         "path": "./snippets/dotnet/bootstrapping.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/dotnet/transactions.json"
       }
     ]
   },
