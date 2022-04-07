@@ -23,5 +23,10 @@
         "prefix": ["@cbtranrem"],
         "body": [],
         "description": "Perform a remove transaction"
+    },
+    "Transaction Import": {
+        "prefix": ["@cbtranimp"],
+        "body": [],
+        "description": "Import all necessary transaction namespaces."
     }
 }

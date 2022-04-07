@@ -25,7 +25,7 @@
         "description": "Perform a synchronous remove transaction"
     },
     "Transaction Import": {
-        "prefix": ["@cbtranex"],
+        "prefix": ["@cbtranimp"],
         "body": ["import com.couchbase.transactions.TransactionGetResult;","import com.couchbase.transactions.TransactionResult;","import com.couchbase.transactions.Transactions;","import com.couchbase.transactions.error.TransactionCommitAmbiguous;","import com.couchbase.transactions.error.TransactionFailed;","import com.couchbase.transactions.log.LogDefer;"],
         "description": "Import all necessary transaction namespaces."
     }
