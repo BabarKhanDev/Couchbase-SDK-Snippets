@@ -43,15 +43,5 @@
         "prefix": ["@cbsubarrins"],
         "body": ["mops = []gocb.MutateInSpec{","    gocb.ArrayInsertSpec(\"${1:path[index]}\", \"${2:value}\", &gocb.ArrayInsertSpecOptions{}),","}","arrayInsertResult, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
         "description": "Insert a new element into an array at a specific position."
-    },
-    "Sub Doc Incrementation": {
-        "prefix": ["@cbsubinc"],
-        "body": ["mops := []gocb.MutateInSpec{","    gocb.IncrementSpec(\"${1:path}\", ${2:value}, &gocb.CounterSpecOptions{}),","}","_, err := ${3:collection}.MutateIn(\"${4:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
-        "description": "Increment a numeric value inside a document."
-    },
-    "Sub Doc Decrementation": {
-        "prefix": ["@cbsubdec"],
-        "body": ["mops = []gocb.MutateInSpec{","    gocb.DecrementSpec(\"${1:path}\", ${2:value}, &gocb.CounterSpecOptions{}),","}","_, err := collection.MutateIn(\"${3:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
-        "description": "Decrement a numeric value inside a document."
     }
 }

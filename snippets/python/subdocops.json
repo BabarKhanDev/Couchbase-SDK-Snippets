@@ -43,15 +43,5 @@
         "prefix": ["@cbsubarrins"],
         "body": ["${1:collection}.mutate_in(\"${2:document-key}\", [SD.array_insert(\"${3:path[index]}\", \"${4:value}\")])"],
         "description": "Insert a new element into an array at a specific position."
-    },
-    "Sub Doc Incrementation": {
-        "prefix": ["@cbsubinc"],
-        "body": ["result = ${1:collection}.mutate_in(\"${2:document-key}\", (SD.counter(\"${3:path}\", ${4:value}),))"],
-        "description": "Increment a numeric value inside a document, for this value must be positive."
-    },
-    "Sub Doc Decrementation": {
-        "prefix": ["@cbsubdec"],
-        "body": ["result = ${1:collection}.mutate_in(\"${2:document-key}\", (SD.counter(\"${3:path}\", ${4:value}),))"],
-        "description": "Decrement a numeric value inside a document, for this value must be negative."
     }
 }

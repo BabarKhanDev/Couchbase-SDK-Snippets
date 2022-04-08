@@ -43,15 +43,5 @@
         "prefix": ["@cbsubarrins"],
         "body": ["await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.ArrayInsert(\"${3:path[index]}\", new[] {${4:value}})",");"],
         "description": "Insert a new element into an array at a specific position."
-    },
-    "Sub Doc Incrementation": {
-        "prefix": ["@cbsubinc"],
-        "body": ["var result = await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Increment(\"${3:path}\", ${4:value})",");","","// Counter operations return the updated count","var count = result.ContentAs<long>(0);"],
-        "description": "Increment a numeric value inside a document."
-    },
-    "Sub Doc Decrementation": {
-        "prefix": ["@cbsubdec"],
-        "body": ["var result = await ${1:collection}.MutateInAsync(\"${2:document-key}\", specs =>","    specs.Decrement(\"${3:path}\", ${4:value})",");","","// Counter operations return the updated count","var count = result.ContentAs<long>(0);"],
-        "description": "Decrement a numeric value inside a document."
     }
 }

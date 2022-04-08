@@ -43,15 +43,5 @@
         "prefix": ["@cbsubarrins"],
         "body": ["await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.arrayInsert('${3:path[index]}', '${4:value}'),","])"],
         "description": "Insert a new element into an array at a specific position."
-    },
-    "Sub Doc Incrementation": {
-        "prefix": ["@cbsubinc"],
-        "body": ["var result = await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.increment('${3:path}', ${4:value}),","])","","console.log(result.content[0])"],
-        "description": "Increment a numeric value inside a document."
-    },
-    "Sub Doc Decrementation": {
-        "prefix": ["@cbsubdec"],
-        "body": ["var result = await ${1:collection}.mutateIn('${2:document-key}', [","  couchbase.MutateInSpec.decrement('${3:path}', ${4:value}),","])","","console.log(result.content[0])"],
-        "description": "Decrement a numeric value inside a document."
     }
 }
