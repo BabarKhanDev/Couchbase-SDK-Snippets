@@ -12,7 +12,7 @@
     "Sub Doc Remove": {
         "prefix": ["@cbsubrem"],
         "body": ["try {","    await ${1:collection}.mutateIn('${2:document-key}', [","        couchbase.MutateInSpec.remove('${3:path}'),","    ])","} catch (e) {","    if (e instanceof couchbase.PathNotFoundError) {","        console.log('Path not found...')","    } else {","        throw e","    }","}"],
-        "description": "Modify the value of an existing path or create it if it does not exist."
+        "description": "Remove the value of an existing path."
     },
     "Array Operations": {
         "prefix": ["@cbsubarrops"],

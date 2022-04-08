@@ -12,7 +12,7 @@
     "Sub Doc Remove": {
         "prefix": ["@cbsubrem"],
         "body": ["mops = []gocb.MutateInSpec{","    gocb.RemoveSpec(\"${1:path}\", nil),","}","multiMutateResult, err := ${2:collection}.MutateIn(\"${3:document-key}\", mops, &gocb.MutateInOptions{})","if err != nil {","    panic(err)","}"],
-        "description": "Modify the value of an existing path or create it if it does not exist."
+        "description": "Remove the value of an existing path."
     },
     "Array Operations": {
         "prefix": ["@cbsubarrops"],
