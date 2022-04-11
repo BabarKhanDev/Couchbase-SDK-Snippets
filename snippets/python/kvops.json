@@ -2,7 +2,7 @@
     "Upsert Document": {
         "prefix": ["@cbups"],
         "body": ["document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","opts = UpsertOptions(durability=ServerDurability(Durability.${5:MAJORITY}))","result = ${6:collection}.upsert(\"${7:document-key}\", document, opts)"],
-        "description": "Create a document object and upsert it to a collection with durability options."
+        "description": " Upsert a document to a collection with durability options."
     },
     "Insert Document": {
         "prefix": ["@cbins"],

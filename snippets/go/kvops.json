@@ -2,7 +2,7 @@
     "Upsert Document": {
         "prefix": ["@cbups"],
         "body": ["upsertResult, err := ${1:collection}.Upsert(\"${2:document-key}\", ${3:&document}, &gocb.UpsertOptions{","    Timeout: ${4:100} * time.Millisecond,","    Expiry:  ${5:60} * time.Second,","    DurabilityLevel: gocb.DurabilityLevel${6:Majority},","})","if err != nil {","    panic(err)","}"],
-        "description": "Upsert an existing document into a collection with expiry and durability."
+        "description": "Upsert a document to a collection with durability options."
     },
     "Insert Document": {
         "prefix": ["@cbins"],

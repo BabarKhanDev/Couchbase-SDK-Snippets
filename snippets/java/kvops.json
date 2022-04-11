@@ -2,7 +2,7 @@
     "Upsert Document": {
         "prefix": ["@cbups"],
         "body": ["JsonObject content = JsonObject.create()","    .put(\"${1:key}\", \"${2:value}\")","","MutationResult result = ${3:collection}.upsert(\"${4:document-key}\", content);"],
-        "description": "Create a JSON object and upsert it to a collection."
+        "description": "Upsert a document to a collection."
     },
     "Insert Document": {
         "prefix": ["@cbins"],

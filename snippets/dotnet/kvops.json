@@ -2,7 +2,7 @@
     "Upsert Document": {
         "prefix": ["@cbups"],
         "body": ["var document = new {${1:key1} = \"${2:value1}\",${3:key2} = \"${4:value2}\"};","var result = await ${5:collection}.UpsertAsync(\"${6:document-key}\", document,","    options =>","    {","        options.Expiry(TimeSpan.FromMinutes(${7:1}));","        options.Durability(PersistTo.${8:One}, ReplicateTo.${9:One});","        options.Timeout(TimeSpan.FromSeconds(${10:5}));","    }",");"],
-        "description": "Create a JSON object and upsert it to a collection."
+        "description": "Upsert a document to a collection."
     },
     "Insert Document": {
         "prefix": ["@cbins"],

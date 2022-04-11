@@ -2,7 +2,7 @@
     "Upsert Document": {
         "prefix": ["@cbups"],
         "body": ["let result = await ${1:collection}.upsert(${2:key}, ${3:document},","    {","        expiry: ${4:60},  // 60 seconds,","        durabilityLevel: couchbase.DurabilityLevel.${5:None}, // Majority etc.","        timeout: ${6:5000}","    } // 5 seconds",");"],
-        "description": "Create a JSON object and upsert it to a collection."
+        "description": "Upsert a document to a collection with durability options."
     },
     "Insert Document": {
         "prefix": ["@cbins"],
