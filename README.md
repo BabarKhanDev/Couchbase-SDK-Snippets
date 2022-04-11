@@ -8,7 +8,7 @@ To do this run the following commands:
 1. `npm install -g vsce`,
 2. `vsce package`,
 3. In Visual Studio Code navigate to the extensions tab and click 'install from vsix',
-4. Install the vsix file that you generated at step 2. 
+4. Select the vsix file that you generated in step 2. 
 
 ## Features
 
