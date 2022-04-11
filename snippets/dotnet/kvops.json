@@ -22,7 +22,7 @@
     "Remove Document": {
         "prefix": ["@cbrem"],
         "body": ["try {","    var previousResult = await ${1:collection}.GetAsync(\"${2:document-key}\");","","    await ${1:collection}.RemoveAsync(\"${2:document-key}\",","        options =>","        {","            options.Cas(previousResult.Cas);","            options.Timeout(TimeSpan.FromSeconds(${3:5}));","        }","    );","}","catch (DocumentNotFoundException) {","    // handle exception"],
-        "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
+        "description": "Use a key to remove a document from a collection."
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],

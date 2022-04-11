@@ -22,7 +22,7 @@
     "Remove Document": {
         "prefix": ["@cbrem"],
         "body": ["removeResult, err := ${1:collection}.Remove(\"${2:document-key}\", &gocb.RemoveOptions{","    Timeout:         ${3:100} * time.Millisecond,","    DurabilityLevel: gocb.DurabilityLevel${4:Majority},","})","if err != nil {","    panic(err)","}"],
-        "description": "Use a key to remove a document from a collection using durability, this will fail if no document with the specified key exists."
+        "description": "Use a key to remove a document from a collection."
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],

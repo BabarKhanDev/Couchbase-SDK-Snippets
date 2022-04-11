@@ -22,7 +22,7 @@
     "Remove Document": {
         "prefix": ["@cbrem"],
         "body": ["try {","    ${1:collection}.remove(\"${2:document-key}\");","} catch (DocumentNotFoundException ex) {","    System.out.println(\"Document did not exist when trying to remove\");","}"],
-        "description": "Use a key to remove a document from a collection, this will fail if no document with the specified key exists."
+        "description": "Use a key to remove a document from a collection."
     },
     "KV Import": {
         "prefix": ["@cbkvimp"],
