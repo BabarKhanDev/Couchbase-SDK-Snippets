@@ -2,7 +2,13 @@
 
 ## How to Install
 
-Please download our extension on the visual studio code extension marketplace or download the source code and compile your own vsix file. 
+Please download our extension on the Visual Studio Code extension marketplace or download the source code and package your own vsix file. 
+
+To do this run the following commands:
+1. `npm install -g vsce`,
+2. `vsce package`,
+3. In Visual Studio Code navigate to the extensions tab and click 'install from vsix',
+4. Install the vsix file that you generated at step 2. 
 
 ## Features
 
