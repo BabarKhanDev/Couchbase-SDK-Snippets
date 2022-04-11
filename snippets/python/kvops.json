@@ -12,7 +12,7 @@
     "Replace Document": {
         "prefix": ["@cbrep"],
         "body": ["try:","    document = {\"${1:key1}\": \"${2:value1}\", \"${3:key2}\": \"${4:value2}\"}","    result = ${5:collection}.replace(","        \"${6:document-key}\","    ,"        document,"    ,"        cas=${7:cas},"    ,"        timeout=timedelta(","            minutes=${8:1}))","except DocumentNotFoundException:","    print(\"Document not found, cannot use replace.\")","except CASMismatchException:","    print(\"CAS mismatch.\")"],
-        "description": "Create a document object and replace a document in a collection, this will fail if no document with the specified key exists."
+        "description": "Replace a document in a collection."
     },
     "Get Document": {
         "prefix": ["@cbget"],

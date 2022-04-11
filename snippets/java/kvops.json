@@ -12,7 +12,7 @@
     "Replace Document": {
         "prefix": ["@cbrep"],
         "body": ["for(int i = 0; i < ${1:maxAttempts}; i++) {","    GetResult found = ${2:collection}.get(\"${3:document-key}\");","    JsonObject content = found.contentAsObject();","","    try {","        ${2:collection}.replace(\"${3:document-key}\", ${4:JsonObject-Document}, replaceOptions().cas(found.cas()));","        break; // if successful, break out of the retry loop","    } catch (CasMismatchException ex) {","        // don't do anything, we'll retry the loop","    }","}"],
-        "description": "Use an existing JsonObject document replace an existing document in a collection, this will retry if there is a cas mismatch."
+        "description": "Replace a document in a collection."
     },
     "Get Document": {
         "prefix": ["@cbget"],

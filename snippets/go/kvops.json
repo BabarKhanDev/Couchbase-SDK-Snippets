@@ -12,7 +12,7 @@
     "Replace Document": {
         "prefix": ["@cbrep"],
         "body": ["replaceResult, err := ${1:collection}.Get(\"${2:document-key}\", nil)","if err != nil {","    panic(err)","}","","updateResult, err := ${1:collection}.Replace(\"${2:document-key}\", ${3:doc}, &gocb.ReplaceOptions{","    Cas: replaceResult.Cas(),","})"],
-        "description": "Get and replace a document with cas, this will fail if no document with the specified key exists."
+        "description": "Replace a document in a collection."
     },
     "Get Document": {
         "prefix": ["@cbget"],
