@@ -1,5 +1,9 @@
 # couchbase-sdk-snippets README
 
+## How to Install
+
+Please download our extension on the visual studio code extension marketplace or download the source code and compile your own vsix file. 
+
 ## Features
 
 This extension adds snippets that are useful when developing with supported Couchbase SDKs. These are: 
