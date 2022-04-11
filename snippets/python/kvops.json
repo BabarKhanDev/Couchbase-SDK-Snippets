@@ -17,7 +17,7 @@
     "Get Document": {
         "prefix": ["@cbget"],
         "body": ["try:","    opts = GetOptions(timeout=timedelta(seconds=${1:5}))","    result = ${2:collection}.get(\"${3:document-key}\", opts)","    print(result.content_as[dict])","except DocumentNotFoundException:","    print(\"Document not found, cannot use get.\")"],
-        "description": "Use a key to get a document object from a collection and assign it to a dictionary, this will fail if no document with the specified key exists."
+        "description": "Use a key to get a document from a collection."
     },
     "Remove Document": {
         "prefix": ["@cbrem"],

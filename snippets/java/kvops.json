@@ -17,7 +17,7 @@
     "Get Document": {
         "prefix": ["@cbget"],
         "body": ["try {","    GetResult getResult = ${1:collection}.get(\"${2:document-key}\");","    JsonObject content = getResult.contentAsObject()","} catch (DocumentNotFoundException ex) {","    System.out.println(\"Document not found!\");","}"],
-        "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
+        "description": "Use a key to get a document from a collection."
     },
     "Remove Document": {
         "prefix": ["@cbrem"],

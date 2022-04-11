@@ -17,7 +17,7 @@
     "Get Document": {
         "prefix": ["@cbget"],
         "body": ["try {","    const result = await ${1:collection}.get(${2:key}, { timeout: ${3:1000} });","    document = result.value;","} catch (e) {","    if (e instanceof couchbase.DocumentNotFoundError) {","        console.log('Document not found...')","    } else {","        throw e","    }","}"],
-        "description": "Use a key to get a JSON object from a collection and assign it to a JSON object, this will fail if no document with the specified key exists."
+        "description": "Use a key to get a document from a collection."
     },
     "Remove Document": {
         "prefix": ["@cbrem"],
