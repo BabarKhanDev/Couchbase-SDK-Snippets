@@ -7,7 +7,7 @@
     "Insert Document": {
         "prefix": ["@cbins"],
         "body": ["insertResult, err := ${1:collection}.Insert(\"${2:document-key}\", ${3:&document}, &gocb.InsertOptions{","    Timeout: ${4:3} * time.Second,","})","if err != nil {","    panic(err)","}"],
-        "description": "Inser an existing document into a collection, this will fail if a document with the same key already exists."
+        "description": "Insert a document into a collection."
     },
     "Replace Document": {
         "prefix": ["@cbrep"],

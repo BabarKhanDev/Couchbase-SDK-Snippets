@@ -7,7 +7,7 @@
     "Insert Document": {
         "prefix": ["@cbins"],
         "body": ["try {","    const result = await ${1:collection}.insert(${2:key}, ${3:document},","        { timeout: ${4:10000} } // 10 seconds",");","} catch (e) {","    if (e instanceof couchbase.DocumentExistsError) {","        console.log('Document exists...')","    } else {","        throw e","    }","}"],
-        "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
+        "description": "Insert a document into a collection."
     },
     "Replace Document": {
         "prefix": ["@cbrep"],

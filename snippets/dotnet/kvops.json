@@ -7,7 +7,7 @@
     "Insert Document": {
         "prefix": ["@cbins"],
         "body": ["try {","    var document = new {${1:key1} = \"${2:value1}\",${3:key2} = \"${4:value2}\"};","","    var result = await ${5:collection}.InsertAsync(\"${6:document-key}\", document,","        options =>","        {","            options.Expiry(TimeSpan.FromDays(${7:1}));","            options.Timeout(TimeSpan.FromSeconds(${8:5}));","        }","    );","}","catch (DocumentExistsException) {","    // handle exception","}"],
-        "description": "Create a JSON object and insert it to a collection, this will fail if a document with the same key already exists."
+        "description": "Insert a document into a collection."
     },
     "Replace Document": {
         "prefix": ["@cbrep"],
