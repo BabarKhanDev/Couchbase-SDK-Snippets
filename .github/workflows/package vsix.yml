@@ -18,9 +18,6 @@ jobs:
 
       - name: Install vsce
         run: npm i -g vsce
-
-      #- name: remove all releases
-       # run: rm releases/*
         
       - name: Update release number
         run: vsce package patch --out "releases/"
