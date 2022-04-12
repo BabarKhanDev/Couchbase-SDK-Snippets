@@ -14,7 +14,7 @@ To do this run the following commands:
 
 1. In `snippets/` create a new json file that will store your snippets,
 2. Visit the [Visual Studio Code documentation on snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets) to learn how to create snippets, that you can then add to your json file,
-3. Link your snippet as a contribute in package.json.
+3. Link your json file as a contribute in package.json.
 
 ## Features
 
