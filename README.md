@@ -10,6 +10,12 @@ To do this run the following commands:
 3. In Visual Studio Code navigate to the extensions tab and click 'install from vsix',
 4. Select the vsix file that you generated in step 2. 
 
+## How to Add New Snippets
+
+1. In `snippets/` create a new json file that will store your snippets,
+2. Visit the [Visual Studio Code documentation on snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets) to learn how to create snippets, that you can then add to your json file,
+3. Link your snippet as a contribute in package.json.
+
 ## Features
 
 This extension adds snippets that are useful when developing with supported Couchbase SDKs. These are: 
