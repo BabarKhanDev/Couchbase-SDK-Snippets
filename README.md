@@ -12,7 +12,7 @@ To do this run the following commands:
 
 ## Contributing
 
-Please visit our contributing.md for information on contributing to this project.
+Please visit our [CONTRIBUTING.md](https://github.com/BabarKhanDev/Couchbase-SDK-Snippets/blob/main/CONTRIBUTING.md) for information on contributing to this project.
 
 ## Features
 
